@@ -1,0 +1,32 @@
+org: slavapetrof
+app: test
+service: aws-node-project
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: eu-central-1
+
+functions:
+  hello:
+    handler: js/helloName.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
+
+plugins:
+  - serverless-webpack
+  - serverless-layers
+
+custom:
+  webpack:
+    webpackConfig: './webpack.config.js'
+    includeModules: true
+    packagePath: './package.json'
+    packager: 'npm'
+  serverless-layers:
+    layersDeploymentBucket: 'aws-node-project'
+    dependenciesPath: ./package.json
