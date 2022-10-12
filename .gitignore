@@ -1,0 +1,35 @@
+CLI_Interactive_sort/.idea
+wLI_Primitive_DB/.idea
+JSON_sorting/.idea
+CLI_Telegram_Console_Sender/.idea
+CLI_Telegram_Console_Sender/.env
+CLI_TG_echo/.idea
+CLI_TG_echo/.env
+TelegramBot_weather_cast/.idea
+TelegramBot_weather_cast/dot.json
+TelegramBot_weather_cast/telega_bot.jpg
+"TelegramBot_weather_cast/tg buttons.txt"
+"TelegramBot_weather_cast/web sock.txt"
+TelegramBot_weather_cast/node_modules
+Correctarium/.idea/
+Correctarium/coverage/
+Correctarium/demo/
+Correctarium/node_modules/
+TelegramBot_weather_cast/.env
+Auth_Backend/.idea/
+Auth_Backend/mb server.js
+Auth_Backend/node_modules/
+JSON_storage/.idea/
+JSON_storage/node_modules/
+JSON_storage/src/.idea/
+Crypto_Rest_API_Backend_TS/src/testing.ts
+Crypto_Rest_API_Backend_TS/src/allIn.ts
+Crypto_Rest_API_Backend_TS/.eslintrc.js
+Crypto_Rest_API_Backend_TS/.git
+Crypto_Rest_API_Backend_TS/node_modules
+Crypto_Rest_API_Backend_TS/.idea
+Crypto_Rest_API_Backend_TS/.env
+Crypto_Rest_API_Backend_TS/js/allIn.js
+Crypto_Rest_API_Backend_TS/testing.js
+
+rebuild/src/functions/AWSsecret.ts
