@@ -1,0 +1,48 @@
+org: slavapetrof
+app: redistribution
+service: redistribution
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: eu-central-1
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+          Resource: "arn:aws:sqs:eu-central-1:142076252903:MyQueue"
+
+plugins:
+  - serverless-webpack
+  - serverless-layers
+
+package:
+  individually: true
+
+custom:
+  webpack:
+    webpackConfig: './webpack.config.js'
+    includeModules: true
+    packagePath: './package.json'
+    packager: 'npm'
+    excludeFiles: '**/*.js.map'
+  serverless-layers:
+    layersDeploymentBucket: 'my-bucket-sqs-for-the-last'
+    dependenciesPath: ./package.json
+
+functions:
+  receiver:
+    handler: js/receiver.handler
+    events:
+      - sqs:
+          arn: "arn:aws:sqs:eu-central-1:142076252903:MyQueue"
+
+  sender:
+    handler: js/sender.handler
+    events:
+      - httpApi:
+          method: post
+          path: /

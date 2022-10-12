@@ -1,0 +1,30 @@
+{
+  "name": "redistribution",
+  "version": "1.0.0",
+  "description": "<!-- title: 'AWS NodeJS Example' description: 'This template demonstrates how to deploy a NodeJS function running on AWS Lambda using the traditional Serverless Framework.' layout: Doc framework: v3 platform: AWS language: nodeJS priority: 1 authorLink: 'https://github.com/serverless' authorName: 'Serverless, inc.' authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4' -->",
+  "main": "js/receiver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.104",
+    "@types/k6": "^0.39.0",
+    "@types/pg": "^8.6.5",
+    "@types/webpack-node-externals": "^2.5.3",
+    "aws-lambda": "^1.0.7",
+    "aws-sdk": "^2.1213.0",
+    "k6": "*",
+    "serverless-layers": "^2.5.4",
+    "serverless-webpack": "^5.9.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "dependencies": {
+    "pg": "^8.8.0"
+  }
+}
