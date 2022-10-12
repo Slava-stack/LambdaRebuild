@@ -1,0 +1,53 @@
+org: slavapetrof
+app: rebuild
+service: rebuild
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: eu-central-1
+
+package:
+  individually: true
+
+plugins:
+  - serverless-webpack
+  - serverless-layers
+
+custom:
+  webpack:
+    webpackConfig: './webpack.config.js'
+    includeModules: true
+    packagePath: './package.json'
+    packager: 'npm'
+    excludeFiles: '**/*.js.map'
+  serverless-layers:
+    layersDeploymentBucket: 'bucket-remake'
+    dependenciesPath: ./package.json
+
+functions:
+  hello:
+    handler: js/handler.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
+  getPics:
+    handler: js/handler.getPicLinks
+    events:
+      - httpApi:
+          path: /pics
+          method: get
+  upload:
+    handler: js/handler.linkToUpload
+    events:
+      - httpApi:
+          path: /pics/upload
+          method: post
+  delete:
+    handler: js/handler.eraseLink
+    events:
+      - httpApi:
+          path: /pics/delete
+          method: delete
