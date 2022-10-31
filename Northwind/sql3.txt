@@ -1,0 +1,124 @@
+CREATE TABLE Region(
+	RegionID INT PRIMARY KEY AUTO_INCREMENT,
+	RegionDescription VARCHAR(20)
+);
+
+CREATE TABLE Categories(
+	CategoryID INT PRIMARY KEY AUTO_INCREMENT, 
+	CategoryName VARCHAR(45),
+	Description TEXT
+);
+
+CREATE TABLE Territories(
+	TerritoryID INT PRIMARY KEY,
+	TerritoryDescription TEXT,
+	RegionID INT,
+	FOREIGN KEY (RegionID) REFERENCES Region (RegionID)
+);
+
+CREATE TABLE Shippers(
+	ShipperID INT PRIMARY KEY,
+	CompanyName VARCHAR(50),
+	Phone VARCHAR(100)
+);
+
+CREATE TABLE Customers(      
+	CustomerID VARCHAR(15) PRIMARY KEY,
+    	CompanyName VARCHAR(70),
+    	CustomerName VARCHAR(60),
+    	ContactName VARCHAR(60),
+    	ContactTitle VARCHAR(60),
+    	Address VARCHAR(100),
+    	City VARCHAR(100),
+    	Region VARCHAR(50),
+    	PostalCode VARCHAR(15),
+    	Country VARCHAR(50),
+    	Phone VARCHAR(40),
+    	Fax VARCHAR(40)
+);
+
+CREATE TABLE Employees(
+	EmployeeID INT PRIMARY KEY,
+	LastName VARCHAR(50),
+	FirstName VARCHAR(50),
+	Title VARCHAR(100),
+	TitleOfCourtesy VARCHAR(20),
+	BirthDate DATE,
+	HireDate DATE,
+	Address VARCHAR(150),
+	City VARCHAR(50),
+	Region VARCHAR(50),
+	PostalCode VARCHAR(20),
+	Country VARCHAR(40),
+	HomePhone VARCHAR(30),
+	Extension VARCHAR(10),
+	Notes TEXT,
+	RepostTo INT 
+);
+
+CREATE TABLE Orders(
+	OrderID INT PRIMARY KEY AUTO_INCREMENT,
+	CustomerID VARCHAR(15),
+	EmployeeID INT,
+	OrderDate DATETIME,
+	RequiredDate DATETIME,
+	ShippedDate DATETIME,
+	ShipVia INT,
+	Freight DECIMAL(6,2),
+	ShipName VARCHAR(50),
+	ShipAddress VARCHAR(100),
+	ShipCity VARCHAR(50),
+	ShipRegion VARCHAR(50),
+	ShipPostalCode VARCHAR(50),
+	ShipCountry VARCHAR(50),
+	FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+	FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID),
+	FOREIGN KEY (ShipVia) REFERENCES Shippers(ShipperID)
+);
+
+CREATE TABLE Supplies(
+    	SupplierID INT PRIMARY KEY AUTO_INCREMENT,	
+	CompanyName VARCHAR(50),
+    	ContactName VARCHAR(50),
+    	ContactTitle VARCHAR(50),
+    	Address VARCHAR(50),
+    	City VARCHAR(50),
+    	Region VARCHAR(50),
+    	PostalCode VARCHAR(30),
+    	Country VARCHAR(50),
+    	Phone VARCHAR(40),
+    	Fax VARCHAR(40),
+    	HomePage TEXT
+);
+
+CREATE TABLE Products(
+	ProductID INT PRIMARY KEY,
+	ProductName VARCHAR(250),
+	SupplierID INT,
+	CategoryID INT,
+	QuantityPerUnit VARCHAR(60),
+	UnitPrice DECIMAL(13,2),
+	UnitInStock SMALLINT,
+	UnitsOnOrder SMALLINT,
+	ReorderLevel SMALLINT,
+	Discontinued BIT(1),
+	FOREIGN KEY (SupplierID) REFERENCES Supplies(SupplierID),
+	FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
+);
+
+CREATE TABLE OrderDetails(
+	OrderID INT,
+	ProductID INT,
+	UnitPrice DECIMAL(13,2),
+	Quantity INT,
+	Discount DECIMAL(5,2),
+	FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+	FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
+CREATE TABLE EmployeeTerritories(
+	EmployeeID INT,
+	TerritoryID INT,
+	FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID),
+	FOREIGN KEY (TerritoryID) REFERENCES Territories (TerritoryID)
+);
