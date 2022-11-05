@@ -1,5 +1,5 @@
      func("abcd") > func("bcd") > func("cd") > func("d") > array[d], 
-	           |         |                |                    |
+	       |         |                |                    |
                |         |                |                    |
                |         |                v                    v
                |         |           word['cd'][1:] + d / .d
