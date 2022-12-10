@@ -1,0 +1,209 @@
+.App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .form {
+    max-width: 1280px;
+    width: 100%;
+    padding: 80px 60px 0px 60px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 10px;
+    margin-bottom: 119px;
+  }
+
+  .fill {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    h1 {
+      line-height: 44px;
+      font-size: 30px;
+      width: 100%;
+      font-weight: 500;
+      color: #1b2235;
+      margin-bottom: 70px;
+    }
+
+    .info {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  .make-order {
+    position: relative;
+
+    .close-block {
+      height: 108px;
+      width: 100%;
+
+      .close-button {
+        width: 36px;
+        height: 36px;
+        background-color: transparent;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        &::before,
+        &::after {
+          position: absolute;
+          content: "";
+          background-color: #1b2235;
+          width: 32px;
+          height: 4px;
+          transform: rotate(45deg);
+          inset: 0;
+          margin: auto;
+        }
+
+        &::after {
+          transform: rotate(-45deg);
+        }
+
+        &:hover {
+          background: #eee;
+        }
+      }
+    }
+
+    .price {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+
+      .number {
+        font-family: Montserrat, sans-serif;
+        font-size: 60px;
+        font-weight: 100;
+        color: #0068e4;
+        letter-spacing: -0.19px;
+        line-height: 1.37;
+      }
+
+      .currency {
+        color: #0068e4;
+        font-weight: 400;
+        line-height: 18px;
+        margin-bottom: 13px;
+      }
+    }
+
+    .time {
+      height: 24px;
+      line-height: 24px;
+      color: #1b2235;
+      margin-bottom: 30px;
+      text-align: right;
+    }
+
+    .button-block {
+      display: flex;
+      justify-content: flex-end;
+      .submit-button {
+        box-shadow: 0 11px 19px #00000029;
+        background-color: #1b2235;
+        border-radius: 8px;
+        padding: 18px 20px;
+        border: none;
+        width: 260px;
+        color: #ffffff4d;
+        font-size: 16px;
+        letter-spacing: -0.05px;
+        font-weight: 500;
+
+        &:disabled {
+          box-shadow: 0 7px 14px #00000029;
+          background-color: #252e47;
+          color: #ffffff4d;
+        }
+
+        &:hover {
+          box-shadow: 0 7px 14px #00000029;
+          background-color: #252e47;
+        }
+      }
+    }
+  }
+}
+
+// and (min-width: 783px)
+@media (max-width: 983px) and (min-width: 783px) {
+  .App {
+    .fill {
+      .info {
+        top: 0.4px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .App {
+    .form {
+      grid-template-columns: 1fr;
+      padding-left: 15px;
+      padding-right: 15px;
+      .fill {
+        h1 {
+          margin-bottom: 38px;
+        }
+      }
+      .make-order {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        .close-button {
+          transform: scale(0.5);
+          top: 33px;
+        }
+        .number {
+          bottom: 1px;
+          position: relative;
+        }
+        .currency {
+          bottom: 1px;
+          position: relative;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 766px) {
+  .App {
+    .form {
+      .make-order {
+        position: unset;
+        .close-button {
+          top: 34px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 623px) {
+  .App {
+    .form {
+      .make-order {
+        .number {
+          bottom: 0px;
+        }
+        .currency {
+          bottom: 1px;
+          position: relative;
+        }
+      }
+      .fill {
+        .info {
+          position: relative;
+          bottom: 0px;
+        }
+      }
+    }
+  }
+}
