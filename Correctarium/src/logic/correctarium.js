@@ -66,4 +66,4 @@ function calculateDate(hours) {
   // return {date: m.locale('ru').calendar(), timeStamp: m.unix()};
 }
 
-module.exports = { calculateDate, getPriceAndHours };
+export { calculateDate, getPriceAndHours };
