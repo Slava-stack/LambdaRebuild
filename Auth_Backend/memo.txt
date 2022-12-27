@@ -1,0 +1,3 @@
+future me: not sure but I must've made redundant middlewares folder. 
+So I think it should be deleted since the same logic is located in 
+the authController getUser function.
