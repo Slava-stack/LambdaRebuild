@@ -1,56 +1,116 @@
-const moment = require('moment');
+const moment = require("moment");
 
 const getPriceAndHours = (lang, file_ext, charsLength) => {
-    const fileExtensions = ['none', 'doc', 'docx', 'rtf'];
-    const extensionRate = Object.values(fileExtensions).includes(file_ext) ? 1 : 1.20;
-    let [pricePerWord, minPrice, charLimit] = (lang === 'ru' || lang === 'ua') ? [0.05, 50, 1333] :
-        (lang === 'en') ? [0.12, 120, 333] : [undefined, undefined, undefined];
-    if (charsLength <= charLimit)
-        return {timeInHours: 1, price: (minPrice * extensionRate).toFixed(2)}
-    else {
-        minPrice += (charsLength - charLimit) * pricePerWord;
-        const timeInHours = Math.ceil(charsLength / charLimit);
-        return {timeInHours, price: (minPrice * extensionRate).toFixed(2)}
+  const fileExtensions = ["none", "doc", "docx", "rtf"];
+  const coeficient = Object.values(fileExtensions).includes(file_ext) ? 1 : 1.2;
+  let pricePerChar, minPrice, charLimit;
+
+  switch (lang) {
+    case "ua":
+    case "ru":
+      [pricePerChar, minPrice, charLimit] = [0.05, 50, 1333];
+      break;
+    case "en":
+      [pricePerChar, minPrice, charLimit] = [0.12, 120, 333];
+      break;
+    default:
+      pricePerChar = minPrice = charLimit = undefined;
+  }
+
+  if (charsLength <= charLimit)
+    return {
+      timeInMins: 60 * coeficient,
+      price: (minPrice * coeficient).toFixed(2),
+    };
+  else {
+    minPrice += (charsLength - charLimit) * pricePerChar;
+    const timeInMins = Math.ceil(charsLength / charLimit) * 60 + 30;
+    return {
+      timeInMins: Math.ceil(timeInMins * coeficient),
+      price: (minPrice * coeficient).toFixed(2),
+    };
+  }
+};
+
+function calculateDate(time) {
+  let m = moment();
+  let addedTime;
+  let timeInSeconds = time * 60;
+
+  function isWorkingTime(momentTime) {
+    const isWorkingTime =
+      momentTime.weekday() === 0 ||
+      momentTime.weekday() === 6 ||
+      momentTime.hour() >= 19;
+    return isWorkingTime;
+  }
+  function skipDay(momentTime) {
+    const nextDay = momentTime.add(1, "d").startOf("d").add(10, "h");
+    return nextDay;
+  }
+
+  function skipNotWorkingHours(momentTime) {
+    const workingHours = momentTime.startOf("d").add(10, "h");
+    return workingHours;
+  }
+
+  function addMinutesTo18(momentTime, timeInSeconds) {
+    if (momentTime.minute() + timeInSeconds / 60 > 60) {
+      timeInSeconds = (momentTime.minute() + timeInSeconds / 60) % 60;
+      const momentTimeStamp = momentTime.add(60 - momentTime.minute(), "m");
+      return { timeInSeconds, momentTimeStamp };
+    } else {
+      const momentTimeStamp = momentTime.add(timeInSeconds / 60, "m");
+      timeInSeconds -= timeInSeconds;
+      return { timeInSeconds, momentTimeStamp };
     }
+  }
+
+  function addTimeGTHour(momentTime, timeInSeconds) {
+    let minutesInSeconds = (60 - momentTime.minute()) * 60;
+    if (minutesInSeconds === 3600) {
+      momentTime.add(1, "h");
+    } else {
+      momentTime = skipDay(momentTime);
+    }
+    timeInSeconds -= minutesInSeconds;
+    return { momentTime, timeInSeconds };
+  }
+
+  function addHourOrRemainingMinutes(momentTime, timeInSeconds) {
+    if (timeInSeconds < 3600) {
+      momentTime.add(Math.ceil(timeInSeconds / 60), "m");
+      timeInSeconds -= timeInSeconds;
+    } else {
+      momentTime.add(1, "h");
+      timeInSeconds -= 3600;
+    }
+    return { momentTime, timeInSeconds };
+  }
+
+  while (timeInSeconds > 0) {
+    if (isWorkingTime(m)) {
+      m = skipDay(m);
+    } else if (m.hour() < 10) {
+      m = skipNotWorkingHours(m);
+    } else if (m.hour() === 18) {
+      if (timeInSeconds < 3600) {
+        addedTime = addMinutesTo18(m, timeInSeconds);
+        m = addedTime.momentTimeStamp;
+        timeInSeconds = addedTime.timeInSeconds;
+      } else {
+        addedTime = addTimeGTHour(m, timeInSeconds);
+        m = addedTime.momentTime;
+        timeInSeconds = addedTime.timeInSeconds;
+      }
+    } else {
+      addedTime = addHourOrRemainingMinutes(m, timeInSeconds);
+      m = addedTime.momentTime;
+      timeInSeconds = addedTime.timeInSeconds;
+    }
+  }
+  // return { date: m.locale("ru").calendar(), timeStamp: m.unix() };
+  return `${m.day()}, ${m.format("H:mm")}`; // testing
 }
 
-function calculateDate(hours) {
-    const m = moment();
-    let hoursInSeconds = hours * 3600;
-    while (hoursInSeconds > 0) {
-        if (m.weekday() === 0 || m.weekday() === 6 || m.hour() >= 19)
-            m.add(1, 'd').startOf('d').add(10, 'h');
-        else if (m.hour() < 10)
-            m.startOf('d').add(10, 'h');
-        else if (m.hour() === 18) {
-            if (hoursInSeconds < 3600) {
-                if (m.minute() + hoursInSeconds / 60 > 60) {
-                    hoursInSeconds = ((m.minute() + hoursInSeconds / 60) % 60);
-                    m.add(60 - m.minute(), 'm');
-                } else {
-                    m.add(hoursInSeconds / 60, 'm')
-                    hoursInSeconds -= hoursInSeconds;
-                }
-            } else {
-                let minutesInSeconds = (60 - m.minute()) * 60;
-                if (minutesInSeconds === 3600)
-                    m.add(1, 'h');
-                else
-                    m.add(1, 'd').startOf('d').add(10, 'h');
-                hoursInSeconds -= minutesInSeconds;
-            }
-        } else {
-            if (hoursInSeconds < 3600) {
-                m.add(hoursInSeconds / 60, 'm');
-                hoursInSeconds -= hoursInSeconds;
-            } else {
-                m.add(1, 'h');
-                hoursInSeconds -= 3600;
-            }
-        }
-    }
-    // return {date: m.locale('ru').calendar(), timeStamp: m.unix()};
-    return `${m.day()}, ${m.format('H:mm')}`;    // testing
-}
-
-module.exports = {calculateDate, getPriceAndHours};
+module.exports = { calculateDate, getPriceAndHours };
