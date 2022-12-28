@@ -1,0 +1,11 @@
+.button-block {
+  button {
+    cursor: pointer;
+    width: 80px;
+    color: rgb(68, 68, 68);
+  }
+
+  &:first-child {
+    margin-right: 20px;
+  }
+}
