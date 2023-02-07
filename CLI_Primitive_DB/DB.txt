@@ -12,3 +12,5 @@
 {"name":"Tanya","gender":"female","age":"11"}
 {"name":"Petro","gender":"male","age":"3"}
 {"name":"Ian","gender":"male","age":"15"}
+{"name":"Loan","gender":"male","age":"23"}
+{"name":"Joel","gender":"male","age":"50"}
