@@ -15,7 +15,8 @@ import {
 } from "../interfaces/types";
 
 export default class GetCoinData extends GetCoins {
-  private coinBaseCurrenciesUrl = "https://api.coinbase.com/v2/currencies";
+  private readonly coinBaseCurrenciesUrl =
+    "https://api.coinbase.com/v2/currencies";
 
   async getCoinMarketCapResponse() {
     const response = await this.getApiResponse();
