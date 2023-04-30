@@ -1,0 +1,11 @@
+.overlay-form {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 3;
+  backdrop-filter: blur(2px);
+  background: rgba(33, 33, 33, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

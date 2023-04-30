@@ -1,0 +1,314 @@
+.nav-button {
+  padding: 15px 31.35px;
+  border-radius: 18.2px;
+  border: none;
+  background: #ffffff;
+  color: #212121;
+  line-height: 17.33px;
+  font-weight: 700;
+  font-size: 17px;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    background: #e0e0e1;
+  }
+
+  &.sep-btn {
+    z-index: 1;
+    background: #ffffff;
+    color: #212121;
+    cursor: pointer;
+    border: none;
+    padding: 14px 55px 17px 55px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
+    color: #212121;
+  }
+
+  &.joining {
+    padding: 17px 76px 16px 74px;
+    font: 700 18px/22px Gilroy;
+  }
+
+  &.roles {
+    padding: 15px 47px 17px 50px;
+    color: #212121;
+    font: 700 18px/22px Gilroy;
+    border: #d2d2d2 1px solid;
+    border-radius: 18px;
+  }
+
+  &.contact {
+    font: 700 18px/22px Gilroy;
+    color: #212121;
+    padding: 16px 57.35px 18px 59.35px;
+  }
+
+  &.help {
+    padding: 16px 67px 17px 67px;
+    border: 1.16667px solid #d2d2d2;
+    background: #f6f6f6;
+    font: 700 18px/22px Gilroy;
+  }
+
+  &.coffee {
+    padding: 16px 57px 17px 59px;
+    border: 1.16667px solid #d2d2d2;
+    background: #f6f6f6;
+    font: 700 18px/22px Gilroy;
+  }
+
+  &.help,
+  &.coffee,
+  &.contact {
+    &:active,
+    &:hover {
+      background-color: #e0e0e1;
+    }
+  }
+}
+
+.faq-sep {
+  background: #ff474d;
+  color: #fff;
+  border-radius: 18px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  border: none;
+  padding: 12px 54.87px 19px 54.57px;
+
+  &:hover,
+  &:active {
+    background: rgba(255, 71, 77, 0.8);
+  }
+}
+
+@media (max-width: 1919px) {
+  .nav-button {
+    font-size: 14px;
+    border-radius: 16px;
+    padding: 11px 26.6px 11px 27px;
+    margin-bottom: -1px;
+
+    &.sep-btn {
+      padding: 12px 50px 16px 50px;
+      font-size: 16px;
+      line-height: 20px;
+      margin-bottom: 0;
+    }
+
+    &.joining {
+      font: 700 16px/19px gilroy;
+      padding: 14px 67.6px 15px 67px;
+      margin-bottom: -4px;
+    }
+
+    &.roles {
+      padding: 10px 43.6px 17px 44px;
+      border-radius: 16px;
+      font: 700 16px/20px Gilroy;
+    }
+
+    &.help {
+      padding: 11px 51.6px 15px 52px;
+      font: 700 16px/20px Gilroy;
+    }
+
+    &.contact {
+      padding: 13px 52.6px 15px 52.6px;
+      font: 700 16.2px/20px gilroy;
+      letter-spacing: -0.07px;
+    }
+  }
+
+  .faq-sep {
+    font-size: 16px;
+    line-height: 20px;
+    border-radius: 16px;
+    padding: 12px 50.67px 16px 50.67px;
+  }
+}
+
+@media (max-width: 1439px) {
+  .nav-button {
+    padding: 12px 26.4px 10px 27.4px;
+
+    &.roles {
+      padding: 11px 44.5px 15px 43.1px;
+      border-radius: 16px;
+    }
+
+    &.joining {
+      margin-bottom: -2px;
+      padding: 13px 67.6px 16px 67px;
+    }
+
+    &.help {
+      padding: 10px 51.6px 16px 51.5px;
+    }
+
+    &.contact {
+      padding: 11px 52.6px 17px 52.6px;
+    }
+  }
+
+  .faq-sep {
+    padding: 12px 50.57px 16px 50.57px;
+    margin-right: -2px;
+  }
+}
+
+@media (max-width: 1279px) {
+  .nav-button {
+    padding: 11px 26.4px 11px 26.4px;
+    &.joining {
+      padding: 13px 67.6px 16px 67px;
+    }
+
+    &.roles {
+      padding: 11px 43.5px 15px 44.1px;
+    }
+
+    &.help {
+      padding: 11px 51.6px 15px 51.5px;
+    }
+
+    &.contact {
+      padding: 12px 52.6px 16px 52.6px;
+    }
+  }
+
+  .faq-sep {
+    padding: 12.4px 50.57px 15.6px 50.57px;
+    margin-right: 1px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .nav-button {
+    align-self: flex-end;
+    position: relative;
+    line-height: 20px;
+    font-size: 16px;
+    margin-left: 0px;
+    font-weight: 600;
+    letter-spacing: 0.04px;
+    background: #ff474d;
+    color: #fff;
+    padding: 12px 49.9px 16px 50px;
+    // right: 254px;
+    bottom: 14px;
+    right: 34.5%;
+
+    &:hover,
+    &:active {
+      background: rgba(255, 71, 77, 0.8);
+    }
+
+    &.sep-btn {
+      margin-right: 1px;
+      padding: 12px 50px 16px 50px;
+      align-self: unset;
+      inset: unset;
+    }
+
+    &.joining {
+      background-color: #fff;
+      color: #212121;
+      inset: 0;
+      margin: 0;
+      align-self: unset;
+      letter-spacing: 0;
+      padding: 13px 66.8px 16px 67.5px;
+    }
+
+    &.roles {
+      align-self: unset;
+      background-color: unset;
+      position: unset;
+      margin-left: 12px;
+      padding: 11px 43.2px 15px 44.3px;
+      letter-spacing: 0;
+    }
+
+    &.help {
+      align-self: unset;
+      position: unset;
+      color: #212121;
+      letter-spacing: 0;
+      padding: 11px 51.6px 15px 51.5px;
+    }
+
+    &.contact {
+      align-self: unset;
+      position: unset;
+      color: #212121;
+      background: #fff;
+      margin-left: 1.5px;
+      padding: 12px 52.4px 16px 52.9px;
+      letter-spacing: -0.09px;
+    }
+
+    &.coffee {
+      align-self: unset;
+      position: unset;
+      color: #212121;
+      letter-spacing: 0;
+      padding: 11px 51.6px 15px 51.5px;
+      font: 700 16px/20px Gilroy;
+    }
+  }
+
+  .faq-sep {
+    margin-right: -1px;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-button {
+    display: none;
+
+    &.sep-btn {
+      display: block;
+      margin-right: -1.9px;
+      padding: 12px 50.3px 16px 49.6px;
+    }
+
+    &.joining {
+      position: unset;
+      display: block;
+      margin: 0 0 0 2px;
+      padding: 13px 67.5px 16px 67.5px;
+    }
+
+    &.roles {
+      display: block;
+      margin-left: 1px;
+    }
+
+    &.help {
+      display: block;
+      margin: 0 0 0 5px;
+    }
+
+    &.contact {
+      display: block;
+      margin-left: 0.5px;
+    }
+
+    &.coffee {
+      display: block;
+      align-self: unset;
+      position: unset;
+      color: #212121;
+      letter-spacing: 0;
+      padding: 11px 51.6px 15px 51.5px;
+      background: unset;
+      margin: 0 0 0 1px;
+      border: 1.16667px solid #d2d2d2;
+    }
+  }
+}

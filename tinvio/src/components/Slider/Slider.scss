@@ -1,0 +1,679 @@
+.container-slider {
+  .slider-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 32px;
+    width: 1132px;
+    height: 377px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 56px;
+
+    .product-img {
+      position: absolute;
+
+      &.eggs {
+        width: 330.3px;
+        height: 317px;
+        top: 30px;
+        right: 16px;
+      }
+
+      &.milk {
+        width: 279px;
+        height: 372px;
+        right: -0.5px;
+        top: 5.5px;
+      }
+
+      &.cup {
+        width: 354.5px;
+        top: 0px;
+        right: 0px;
+        height: 377px;
+      }
+
+      &.spoon {
+        height: 353px;
+        width: 279px;
+        top: 24px;
+        right: 16.12px;
+      }
+    }
+
+    .slider-text {
+      background: #f1f1f1;
+      padding: 24px;
+      border-radius: 16px;
+      display: flex;
+      line-height: 25px;
+      height: 124px;
+
+      p {
+        font-family: "Inter";
+        font-weight: 400;
+        font-size: 20px;
+        height: 75px;
+      }
+
+      &.eggs {
+        width: 933px;
+        margin-bottom: 20px;
+
+        p {
+          width: 701px;
+        }
+      }
+
+      &.milk {
+        width: 976px;
+        margin-bottom: 26px;
+
+        p {
+          width: 759px;
+        }
+      }
+
+      &.cup {
+        width: 866px;
+        margin-bottom: 28px;
+
+        p {
+          width: 698px;
+        }
+      }
+
+      &.spoon {
+        width: 935px;
+        margin-bottom: 27px;
+        p {
+          width: 750px;
+        }
+      }
+
+      img {
+        display: flex;
+        align-self: flex-end;
+      }
+    }
+
+    .company-block {
+      display: flex;
+      align-items: center;
+      margin-left: 23px;
+
+      .company-logo {
+        margin-right: 12px;
+
+        &.spoon {
+          margin-left: 1px;
+        }
+      }
+
+      .name-position-block {
+        p:first-child {
+          margin-bottom: 5px;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 22px;
+          color: #212121;
+        }
+
+        p:nth-child(2) {
+          color: #5c5c5c;
+          font-family: "Inter";
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 15px;
+          padding-left: 1px;
+        }
+      }
+    }
+
+    .slider-buttons-block {
+      margin: auto 0px 0px 0px;
+      display: flex;
+      gap: 24px;
+      margin-left: 24px;
+
+      button {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        display: flex;
+
+        svg:hover {
+          rect {
+            fill: rgba(209, 209, 209, 0.7);
+          }
+        }
+
+        svg:active {
+          rect {
+            fill: rgba(209, 209, 209, 0.7);
+          }
+        }
+      }
+    }
+  }
+
+  .container-rectangles {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    padding-right: 32px;
+
+    .rec {
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(250, 250, 250, 0.2) 100%
+      );
+      border-radius: 2px;
+      transform: rotate(-45deg);
+      margin-left: 21px;
+    }
+
+    .active {
+      background: radial-gradient(#ffffff 0%, rgba(250, 250, 250, 0.8) 100%);
+    }
+  }
+}
+
+@media (max-width: 1919px) {
+  .container-slider {
+    .slider-card {
+      padding-left: 33px;
+      padding-top: 32px;
+      width: 1032px;
+
+      .slider-text {
+        height: 120px;
+
+        padding-top: 24px;
+        padding-left: 23px;
+        border-radius: 14px;
+        margin-bottom: 20px;
+
+        p {
+          font-size: 18px;
+          line-height: 24.5px;
+          height: 72px;
+        }
+
+        &.spoon {
+          width: 840px;
+
+          p {
+            width: 621px;
+          }
+        }
+
+        &.eggs {
+          width: 823px;
+          border-top-right-radius: 0px;
+
+          p {
+            width: 626px;
+          }
+        }
+
+        &.milk {
+          width: 874px;
+
+          p {
+            width: 681px;
+          }
+        }
+
+        &.cup {
+          width: 741px;
+          border-top-right-radius: 0px;
+
+          p {
+            width: 565px;
+          }
+        }
+      }
+
+      .company-block {
+        .company-logo {
+          &.spoon {
+            margin-left: 0px;
+          }
+        }
+
+        .name-position-block {
+          p:nth-child(2) {
+            padding-left: 0px;
+          }
+        }
+      }
+
+      .slider-buttons-block {
+        margin-left: 23px;
+      }
+
+      .product-img {
+        &.spoon {
+          right: 16px;
+          width: 278px;
+        }
+
+        &.eggs {
+          width: 330.01px;
+          right: 16px;
+        }
+
+        &.milk {
+          height: 372px;
+          width: 278px;
+          right: 0.5px;
+          top: 7.5px;
+        }
+
+        &.cup {
+          right: 0px;
+          top: 3.5px;
+          height: 384px;
+          width: 361px;
+        }
+      }
+    }
+
+    .container-rectangles {
+      padding-right: 6.8px;
+      margin-top: 35px;
+
+      .rec {
+        margin-left: 21.1px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1439px) {
+  .container-slider {
+    .slider-card {
+      margin-left: 3px;
+    }
+
+    .container-rectangles {
+      margin-top: 35px;
+      padding-right: 18px;
+    }
+  }
+}
+
+@media (max-width: 1279px) {
+  .container-slider {
+    .slider-card {
+      width: 947px;
+      margin-left: 0px;
+      padding-bottom: 48px;
+      padding-left: 32px;
+
+      .product-img {
+        &.eggs {
+          right: 35px;
+        }
+      }
+
+      .slider-text {
+        height: 144px;
+        padding-left: 24px;
+
+        p {
+          line-height: 24px;
+          padding-top: 1px;
+        }
+
+        &.eggs {
+          margin-bottom: 12px;
+          width: 724px;
+
+          p {
+            width: 469px;
+          }
+        }
+
+        &.spoon {
+          width: 756px;
+          margin-bottom: 19px;
+
+          p {
+            width: 541px;
+          }
+        }
+
+        &.cup {
+          width: 653px;
+          margin-bottom: 20px;
+
+          p {
+            width: 513px;
+          }
+        }
+
+        &.milk {
+          width: 792px;
+          margin-bottom: 18px;
+
+          p {
+            width: 548px;
+          }
+        }
+      }
+
+      .product-img {
+        &.cup {
+          right: 3px;
+          height: 383px;
+          width: 360px;
+        }
+
+        &.milk {
+          top: 2.5px;
+          height: 371px;
+        }
+      }
+
+      .company-block {
+        margin-left: 24px;
+      }
+
+      .slider-buttons-block {
+        margin-left: 24px;
+      }
+    }
+
+    .container-rectangles {
+      margin-top: 35px;
+      padding-right: 70px;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .container-slider {
+    .slider-card {
+      width: 490px;
+      padding-top: 334px;
+      height: 610px;
+      padding-left: 0px;
+
+      .slider-text {
+        height: 136px;
+        padding-top: 21px;
+
+        &.spoon,
+        &.cup,
+        &.milk,
+        &.eggs {
+          padding-left: 32.5px;
+          width: 474px;
+          border-radius: 0px 16px 16px 0px;
+        }
+
+        &.eggs {
+          margin-bottom: 20px;
+        }
+
+        &.milk {
+          margin-bottom: 26px;
+        }
+
+        &.cup {
+          margin-bottom: 28px;
+        }
+
+        &.spoon {
+          margin-bottom: 27px;
+        }
+
+        p {
+          font-size: 16px;
+          line-height: 23px;
+          width: fit-content;
+        }
+
+        img {
+          position: absolute;
+          right: 32px;
+          bottom: 84px;
+        }
+      }
+
+      .company-block {
+        margin-left: 32px;
+
+        .company-logo {
+          margin-right: 12.5px;
+
+          &.spoon {
+            margin-right: 12.5px;
+            width: 94px;
+          }
+
+          &.spoon + .name-position-block {
+            margin-top: 1px;
+          }
+        }
+      }
+
+      .slider-buttons-block {
+        display: none;
+      }
+
+      .product-img {
+        &.eggs {
+          height: 295px;
+          width: 305.97px;
+          right: 86px;
+          top: 30px;
+        }
+
+        &.milk {
+          right: 80px;
+          top: 5px;
+          width: 254px;
+          height: 338px;
+        }
+
+        &.cup {
+          right: 44px;
+          height: 385px;
+          width: 334px;
+          top: -37px;
+        }
+
+        &.spoon {
+          width: 234.83px;
+          height: 298px;
+          right: 122px;
+          top: 36px;
+        }
+      }
+    }
+
+    .container-rectangles {
+      margin-top: 34.5px;
+      padding-right: 21px;
+      height: 15px;
+    }
+
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(250, 250, 250, 0.8) 100%
+      );
+      border-radius: 2px;
+      transform: rotate(-45deg);
+      margin-left: 21px;
+
+      &-active {
+        background: radial-gradient(#ffffff 0%, rgba(250, 250, 250, 0.9) 100%);
+      }
+    }
+  }
+
+  .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+  .swiper-pagination-horizontal.swiper-pagination-bullets
+    .swiper-pagination-bullet {
+    margin-left: 17px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container-slider {
+    .slider-card {
+      width: 343px;
+      height: 550px;
+      padding: 260px 16px 42px 0px;
+
+      .slider-text {
+        &.spoon,
+        &.cup,
+        &.milk,
+        &.eggs {
+          height: 178px;
+          width: 327px;
+          padding: 19px 16px 20px 24px;
+
+          p {
+            width: 287px;
+            font-size: 16px;
+            height: 138px;
+          }
+        }
+
+        &.eggs {
+          margin-bottom: 14px;
+        }
+
+        &.spoon {
+          margin-bottom: 23px;
+        }
+
+        &.cup {
+          margin-bottom: 22px;
+        }
+
+        &.milk {
+          margin-bottom: 24px;
+        }
+
+        img {
+          right: 24px;
+          bottom: 64px;
+        }
+      }
+
+      .product-img {
+        &.eggs {
+          width: 237.63px;
+          height: 228.3px;
+          right: 44px;
+          top: 22.4px;
+        }
+
+        &.cup {
+          right: 20.1px;
+          height: 294.9px;
+          width: 255px;
+          top: -22.5px;
+        }
+
+        &.milk {
+          right: 46px;
+          top: 6px;
+          width: 194px;
+          height: 256px;
+        }
+
+        &.spoon {
+          width: 185.83px;
+          height: 235px;
+          right: 65.1px;
+          top: 25px;
+        }
+      }
+
+      .company-block {
+        margin-left: 24px;
+
+        .company-logo {
+          margin-right: 12px;
+
+          &.eggs {
+            width: 48px;
+            height: 56px;
+            margin-right: 12.6px;
+          }
+
+          &.spoon {
+            width: 78px;
+            height: 41px;
+          }
+
+          &.cup {
+            width: 85px;
+            height: 40px;
+            margin-right: 12.4px;
+          }
+
+          &.milk {
+            width: 60px;
+            height: 44px;
+            margin-right: 12.5px;
+
+            & + .name-position-block {
+              width: 160px;
+
+              p:first-child {
+                margin-bottom: 6px;
+              }
+
+              p:last-child {
+                line-height: 12px;
+              }
+            }
+          }
+        }
+
+        .name-position-block {
+          p:nth-child(1) {
+            font-size: 16px;
+            line-height: 19px;
+            margin-bottom: 4px;
+          }
+
+          p:nth-child(2) {
+            font-size: 10px;
+            line-height: 16px;
+          }
+        }
+      }
+    }
+
+    .container-rectangles {
+      margin-top: 26.4px;
+      padding-right: 44px;
+    }
+
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+  .swiper-pagination-horizontal.swiper-pagination-bullets
+    .swiper-pagination-bullet {
+    margin-left: 15.9px;
+  }
+}

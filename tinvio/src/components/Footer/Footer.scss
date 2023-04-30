@@ -1,0 +1,360 @@
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  padding: 46px 304px 5px 302px;
+  position: relative;
+  bottom: 12px;
+
+  &.info {
+    background: #fafafa;
+    position: unset;
+    padding-bottom: 18px;
+
+    @media (min-width: 1920px) {
+      .footer-nav-block {
+        .footer-nav {
+          padding-bottom: 3px;
+        }
+      }
+    }
+  }
+
+  &.features {
+    position: relative;
+    bottom: unset;
+  }
+
+  &.company {
+    position: unset;
+    padding-bottom: 17px;
+  }
+
+  .footer-nav-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 33px;
+
+    & > img {
+      padding-bottom: 3px;
+      transform: translateY(1px);
+    }
+
+    .footer-nav {
+      width: 317px;
+      display: flex;
+      justify-content: space-between;
+      margin-right: 461px;
+      padding-bottom: 4px;
+
+      a {
+        color: black;
+        text-decoration: none;
+        font-weight: 500;
+      }
+    }
+
+    .find-us {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 2px;
+
+      & img:nth-child(1),
+      & img:nth-child(4) {
+        margin-right: 16px;
+      }
+    }
+  }
+
+  .footer-nav-separator {
+    background: #c4c4c4;
+    width: 1px;
+    height: 32px;
+    margin: 0px 24px;
+    margin-bottom: 1px;
+  }
+
+  .about-us,
+  .about-us a {
+    color: #bdbdbd;
+    text-decoration: none;
+  }
+
+  .about-us {
+    display: flex;
+    align-items: center;
+    padding-left: 3px;
+
+    &-separator-one {
+      width: 1px;
+      height: 14px;
+      background: #c4c4c4;
+      margin: 0px 9px;
+    }
+
+    &-separator-two {
+      width: 1px;
+      height: 14px;
+      background: #c4c4c4;
+      margin: 0px 8.4px 0px 8px;
+    }
+
+    a {
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    p {
+      font-size: 12px;
+      font-family: Inter;
+      font-weight: 500;
+    }
+  }
+}
+
+@media (max-width: 1919px) {
+  footer {
+    position: relative;
+    bottom: 4px;
+    padding: 46px 124px 13px 122px;
+
+    .footer-nav-block {
+      margin-bottom: 34px;
+
+      .footer-nav {
+        margin-right: 341px;
+        margin-bottom: 0px;
+        height: 22px;
+      }
+    }
+
+    .about-us {
+      padding-left: 2px;
+      letter-spacing: 0.05px;
+    }
+
+    @media (min-width: 1440px) {
+      &.features {
+        top: -6px;
+        padding: 46px 124px 11px 122px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1439px) {
+  footer {
+    bottom: 0;
+    padding: 46px 123px 17px 122px;
+
+    &.features {
+      padding: 45px 123px 17px 122px;
+    }
+
+    .footer-nav-block {
+      width: fit-content;
+
+      .footer-nav {
+        width: 317px;
+        margin-right: 181px;
+      }
+    }
+
+    .find-us {
+      .footer-nav-separator {
+        margin-bottom: 0px;
+      }
+    }
+
+    .about-us {
+      .about-us-separator-two {
+        margin: 0px 8px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1279px) {
+  footer {
+    padding-left: 38px;
+    padding-right: 40px;
+
+    &.features {
+      padding: 46px 40px 17px 38px;
+    }
+
+    .footer-nav-block {
+      .footer-nav {
+        margin-right: 117px;
+        width: 293px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  footer {
+    align-items: center;
+    padding-top: 29px;
+    padding-left: 40px;
+    padding-bottom: 17px;
+
+    &.features {
+      padding: 29px 40px 17px 40px;
+    }
+
+    .footer-nav-block {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 21px;
+      margin-right: 0px;
+
+      & > img {
+        margin-bottom: 24px;
+        transform: translate(-1px, 1px);
+      }
+
+      .footer-nav-separator {
+        display: none;
+      }
+
+      .footer-nav {
+        margin-right: 0px;
+        margin-bottom: 34px;
+        width: 388px;
+        margin-left: 1px;
+      }
+
+      .find-us {
+        img:nth-child(2) {
+          margin-right: 32px;
+        }
+      }
+    }
+
+    .about-us {
+      padding-left: 0px;
+    }
+
+    &.shrinked {
+      position: unset;
+      padding-top: 1px;
+      padding-bottom: 14px;
+
+      .footer-nav-block {
+        margin: 0px;
+
+        & > img:first-child {
+          display: none;
+        }
+
+        .footer-nav {
+          display: none;
+        }
+      }
+
+      .about-us {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  footer {
+    padding: 29px 40px 8px 39px;
+
+    &.info {
+      padding: 37px 40px 8px 39px;
+
+      .footer-nav-block {
+        .footer-nav {
+          margin-left: 3px;
+        }
+      }
+    }
+
+    &.features {
+      padding: 37px 40px 2px 39px;
+    }
+
+    &.company{
+      padding-bottom: 8px;
+    }
+
+    .footer-nav-block {
+      margin-bottom: 24px;
+
+      & > img {
+        margin-bottom: 19px;
+      }
+
+      .footer-nav {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 2px;
+        height: 160px;
+        margin-bottom: 35px;
+        width: 369px;
+
+        a {
+          font-size: 14px;
+          line-height: 27px;
+        }
+      }
+
+      .find-us {
+        width: fit-content;
+        gap: 11px 16px;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        position: relative;
+        left: 1px;
+
+        img:first-child,
+        img:nth-child(4) {
+          justify-self: end;
+          margin-right: 0px;
+        }
+      }
+    }
+
+    .about-us {
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 210px;
+      gap: 5px 0px;
+
+      p {
+        font-size: 10px;
+        line-height: 12px;
+      }
+
+      .about-us-separator-one {
+        display: none;
+
+        & + a {
+          font-size: 10px;
+          line-height: 12px;
+          margin-left: 19px;
+        }
+      }
+
+      .about-us-separator-two {
+        height: 10px;
+        margin-top: 1px;
+
+        & + a {
+          font-size: 12px;
+          line-height: 14px;
+          margin-top: 2px;
+          margin-left: 0.4px;
+        }
+      }
+    }
+  }
+}
