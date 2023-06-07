@@ -60,7 +60,7 @@ export default function Product() {
               return (
                 <div key={i}>
                   <p className="p-header">{pHeader}</p>
-                  <Link to={`http://localhost:3001/supplier/${supplierValue}`}>
+                  <Link to={`/supplier/${supplierValue}`}>
                     <p>{el[1]}</p>
                   </Link>
                 </div>

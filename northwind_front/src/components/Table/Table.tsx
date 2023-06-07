@@ -45,11 +45,7 @@ export default function Table({ tableData, whereTo }: TableInterface) {
                 if (isOrderIdLink) {
                   return (
                     <td key={i} data-label={label}>
-                      <Link
-                        to={`http://localhost:3001/${whereTo}/${values[0]}`}
-                      >
-                        {value}
-                      </Link>
+                      <Link to={`/${whereTo}/${values[0]}`}>{value}</Link>
                     </td>
                   );
                 }
@@ -57,11 +53,7 @@ export default function Table({ tableData, whereTo }: TableInterface) {
                 if (isOtherIdLink) {
                   return (
                     <td key={i} data-label={label}>
-                      <Link
-                        to={`http://localhost:3001/${whereTo}/${values[0]}`}
-                      >
-                        {value}
-                      </Link>
+                      <Link to={`/${whereTo}/${values[0]}`}>{value}</Link>
                     </td>
                   );
                 }

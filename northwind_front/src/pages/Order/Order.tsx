@@ -68,7 +68,7 @@ export default function Order() {
                   return (
                     <div key={i}>
                       <p className="p-header">{pHeader.replace("i d", "id")}</p>
-                      <Link to={`http://localhost:3001/customer/${el[1]}`}>
+                      <Link to={`/customer/${el[1]}`}>
                         <p>{value}</p>
                       </Link>
                     </div>
