@@ -2,13 +2,16 @@ import fsp from "fs/promises";
 
 export default async function getCountryCode(ip: string) {
   const decIp = ipToDecIp(ip);
-  console.log('getCOuntry code', decIp, ip);
+
+  console.log("getCOuntry code");
+  console.log("decIP", decIp);
+  console.log(ip);
   const data = await fsp.readFile("./IP2LOCATION-LITE-DB1.CSV", "utf8");
   return findIpRowAccordingDecIp(data, decIp);
 }
 
 function ipToDecIp(ip: string) {
-  console.log('ipToDecIp', ip)
+  console.log("ipToDecIp", ip);
   const octetArr: string[] = [];
   ip.split(".").forEach((el) => {
     octetArr.push("0".repeat(8 - (+el).toString(2).length) + (+el).toString(2));
