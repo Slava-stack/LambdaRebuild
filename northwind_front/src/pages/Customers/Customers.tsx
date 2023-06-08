@@ -26,7 +26,7 @@ export default function Customers() {
         const {
           data: { log, result },
         } = await axios.get<CustomersReponseAPI>(
-          "http://localhost:3000/customers"
+          "https://northwind-api-9rxg.onrender.com/customers"
         );
         setResponseDataRows(result);
         log.forEach((el) => addQuery(el));

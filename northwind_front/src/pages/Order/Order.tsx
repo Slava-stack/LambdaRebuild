@@ -30,7 +30,7 @@ export default function Order() {
       const {
         data: { result, results, log },
       } = await axios.get<OrderResponseAPI>(
-        `http://localhost:3000/order/${id}`
+        `https://northwind-api-9rxg.onrender.com/order/${id}`
       );
       setOrderInfo(result);
       addQueryResult(results);
@@ -46,7 +46,7 @@ export default function Order() {
   return (
     <main>
       <LeftSpaceFlexWrapper direction="column">
-        {Object.keys(orderInfo).length && (
+        {Object.keys(orderInfo).length > 0 && (
           <>
             <p>Order information</p>
             <StyledColumnsFlexWrapper

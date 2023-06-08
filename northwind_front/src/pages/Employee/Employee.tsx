@@ -34,7 +34,7 @@ export default function Employees() {
       const {
         data: { result, results, log },
       } = await axios.get<EmployeeResponseAPI>(
-        `http://localhost:3000/Employee/${id}`
+        `https://northwind-api-9rxg.onrender.com/Employee/${id}`
       );
       setEmployeeInfo(result[0]);
       addQueryResult(results);

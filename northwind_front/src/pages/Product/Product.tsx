@@ -25,7 +25,7 @@ export default function Product() {
       const {
         data: { result, results, log },
       } = await axios.get<ProductReponseAPI>(
-        `http://localhost:3000/product/${id}`
+        `https://northwind-api-9rxg.onrender.com/product/${id}`
       );
       setProductInfo(result[0]);
       addQueryResult(results);

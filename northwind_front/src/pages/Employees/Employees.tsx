@@ -26,7 +26,7 @@ export default function Employees() {
         const {
           data: { log, result },
         } = await axios.get<EmployeesReponseAPI>(
-          "http://localhost:3000/employees"
+          "https://northwind-api-9rxg.onrender.com/employees"
         );
         setResponseDataRows(result);
         log.forEach((el) => addQuery(el));

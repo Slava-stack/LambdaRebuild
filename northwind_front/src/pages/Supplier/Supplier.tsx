@@ -24,7 +24,7 @@ export default function Supplier() {
       const {
         data: { result, results, log },
       } = await axios.get<SupplierResponseAPI>(
-        `http://localhost:3000/supplier/${id}`
+        `https://northwind-api-9rxg.onrender.com/supplier/${id}`
       );
       setSupplierInfo(result[0]);
       log.forEach((el) => addQuery(el));

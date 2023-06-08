@@ -25,7 +25,7 @@ export default function Orders() {
       try {
         const {
           data: { result, log },
-        } = await axios.get<OrdersReponseAPI>("http://localhost:3000/orders");
+        } = await axios.get<OrdersReponseAPI>("https://northwind-api-9rxg.onrender.com/orders");
         setResponseDataRows(result);
         log.forEach((el) => addQuery(el));
       } catch (err) {

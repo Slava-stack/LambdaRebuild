@@ -28,7 +28,7 @@ export default function Dashboard() {
         const {
           data: { colo, countryCode },
         }: DashResponseInterface = await axios.get(
-          "http://localhost:3000/dash"
+          "https://northwind-api-9rxg.onrender.com/dash"
         );
         setClientData({ colo, countryCode });
       } catch (err) {

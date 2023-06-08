@@ -43,7 +43,7 @@ export default function Search() {
     const {
       data: { result, log, results },
     } = await axios.get<SearchResponseAPI>(
-      `http://localhost:3000/search/${tableType}/${searchWord}`
+      `https://northwind-api-9rxg.onrender.com/search/${tableType}/${searchWord}`
     );
     setSearchValues(result);
     addQueryResult(results);

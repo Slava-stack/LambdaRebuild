@@ -26,7 +26,7 @@ export default function Customers() {
       const {
         data: { result, results, log },
       } = await axios.get<CustomerResponseAPI>(
-        `http://localhost:3000/customer/${id}`
+        `https://northwind-api-9rxg.onrender.com/customer/${id}`
       );
       setCustomerInfo(result[0]);
       addQueryResult(results);
