@@ -16,14 +16,14 @@ const promises_1 = __importDefault(require("fs/promises"));
 function getCountryCode(ip) {
     return __awaiter(this, void 0, void 0, function* () {
         const decIp = ipToDecIp(ip);
-        console.log(decIp);
+        console.log('getCOuntry code', decIp, ip);
         const data = yield promises_1.default.readFile("./IP2LOCATION-LITE-DB1.CSV", "utf8");
         return findIpRowAccordingDecIp(data, decIp);
     });
 }
 exports.default = getCountryCode;
 function ipToDecIp(ip) {
-    console.log(ip);
+    console.log('ipToDecIp', ip);
     const octetArr = [];
     ip.split(".").forEach((el) => {
         octetArr.push("0".repeat(8 - (+el).toString(2).length) + (+el).toString(2));
