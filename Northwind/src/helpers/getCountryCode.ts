@@ -1,6 +1,9 @@
 import fsp from "fs/promises";
 
 export default async function getCountryCode(ip: string) {
+  if (ip.includes(",")) {
+    ip = ip.split(",")[0];
+  }
   const decIp = ipToDecIp(ip);
 
   console.log("getCOuntry code");

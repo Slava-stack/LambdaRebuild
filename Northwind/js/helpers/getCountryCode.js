@@ -15,6 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const promises_1 = __importDefault(require("fs/promises"));
 function getCountryCode(ip) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (ip.includes(",")) {
+            ip = ip.split(",")[0];
+        }
         const decIp = ipToDecIp(ip);
         console.log("getCOuntry code");
         console.log("decIP", decIp);
