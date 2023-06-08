@@ -9,7 +9,6 @@ export const Dash = async (
   next: NextFunction
 ) => {
   const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
-  console.log(ip)
   if (ip && !Array.isArray(ip)) {
     try {
       const code = await getCountryCode(ip);

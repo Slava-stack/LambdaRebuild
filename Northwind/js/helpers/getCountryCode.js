@@ -19,16 +19,12 @@ function getCountryCode(ip) {
             ip = ip.split(",")[0];
         }
         const decIp = ipToDecIp(ip);
-        console.log("getCOuntry code");
-        console.log("decIP", decIp);
-        console.log(ip);
         const data = yield promises_1.default.readFile("./IP2LOCATION-LITE-DB1.CSV", "utf8");
         return findIpRowAccordingDecIp(data, decIp);
     });
 }
 exports.default = getCountryCode;
 function ipToDecIp(ip) {
-    console.log("ipToDecIp", ip);
     const octetArr = [];
     ip.split(".").forEach((el) => {
         octetArr.push("0".repeat(8 - (+el).toString(2).length) + (+el).toString(2));
