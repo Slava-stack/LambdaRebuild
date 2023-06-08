@@ -15,6 +15,5 @@ export const idHandler = (
       return;
     }
   }
-
   res.status(404).json({ message: errorMsgs.idMsg });
 };
