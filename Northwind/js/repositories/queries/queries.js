@@ -20,7 +20,7 @@ const queries = {
         "ON O.OrderID = OD.OrderID " +
         "GROUP BY O.OrderID;",
     orderQuery1: "SELECT O.CustomerID, O.ShipName, COUNT(*) AS TotalProducts, " +
-        "SUM(OD.Quantity) AS Quantity, SUM(OD.UnitPrice * OD.Quantity) AS TotalPrice, " +
+        "SUM(OD.Quantity) AS Quantity, S.CompanyName AS ShipVia, SUM(OD.UnitPrice * OD.Quantity) AS TotalPrice, " +
         "SUM(OD.UnitPrice * OD.Discount * OD.Quantity) AS TotalDiscount, S.CompanyName, O.Freight, O.OrderDate, " +
         "O.RequiredDate, O.ShippedDate, O.ShipCity, O.ShipRegion, O.ShipPostalCode, O.ShipCountry " +
         "FROM Orders AS O " +
