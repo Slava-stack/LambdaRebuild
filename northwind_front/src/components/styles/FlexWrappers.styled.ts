@@ -28,9 +28,9 @@ export const LeftSpaceFlexWrapper = styled(FlexWrapper)`
 
 export const AsideWrapper = styled(FlexWrapper)`
   background: #edf2f6;
-  padding: 10px 0 0 0;
   height: 100%;
-  text-align: center;
+  width: 15rem;
+  background: rgb(31 41 55);
 `;
 
 export const FlexWrapperShortened = styled(FlexWrapperRounded)<{
@@ -41,6 +41,7 @@ export const FlexWrapperShortened = styled(FlexWrapperRounded)<{
 
 export const FlexWrapper100Width = styled(FlexWrapper)`
   width: 100%;
+  background: #f9fafb;
 `;
 
 export const PagesFlexWrapper = styled(FlexWrapper)`

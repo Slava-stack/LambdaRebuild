@@ -4,26 +4,27 @@ import axios from "axios";
 import { OrderInfoInterface, OrderResponseAPI } from "../../types/types";
 import PaginatedTable from "../../components/PaginatedTable/PaginatedTable";
 import useQueriesStore from "../../store/queriesStore";
-import getDate from "../../helpers/getDate";
-import { fromCmlToStrUpperFirst } from "../../helpers/camelToSpaceString";
-import Button from "../../components/Button/Button";
 import useWindowWidthResize from "../../hooks/windowWidth";
+import InfoCartWrapper from "../../components/styles/InfoCartWrapper.styled";
+import IndividualHeader from "../../components/IndividualHeader/IndividualHeader";
+import IndividualContainer from "../../components/styles/IndividualContainer.styled";
+import IndividualFooter from "../../components/IndividualFooter/IndividualFooter";
 
-import { LeftSpaceFlexWrapper } from "../../components/styles/FlexWrappers.styled";
-import StyledColumnsFlexWrapper from "../../components/styles/ColumnsFlexWrapper.styled";
+import "./Order.scss";
 
 export default function Order() {
   const AMOUNT_OF_VALUES_PER_PAGE = 20;
   const { addQuery, addQueryResult } = useQueriesStore();
-  const [orderInfo, setOrderInfo] = useState<OrderInfoInterface>(
-    {} as OrderInfoInterface
-  );
+  const [orderInfo, setOrderInfo] = useState<OrderInfoInterface>();
   const windowWidth = useWindowWidthResize();
 
   const urlParams = useParams();
   const { id } = urlParams;
 
   const ignore = useRef(false);
+
+  const orderInformation = orderInfo?.OrderInformation[0];
+  const productsInOrder = orderInfo?.ProductsInOrder;
 
   useEffect(() => {
     const getAndSetData = async () => {
@@ -45,65 +46,81 @@ export default function Order() {
 
   return (
     <main>
-      <LeftSpaceFlexWrapper direction="column">
-        {Object.keys(orderInfo).length > 0 && (
-          <>
-            <p>Order information</p>
-            <StyledColumnsFlexWrapper
-              columns={windowWidth < 800 ? 2 : 3}
-              width="80%"
-            >
-              {Object.entries(orderInfo.OrderInformation[0]).map((el, i) => {
-                const pHeader = fromCmlToStrUpperFirst(el[0]);
-                let value = el[1];
-
-                const isDollarValues =
-                  el[0].includes("Discount") ||
-                  el[0].includes("Price") ||
-                  el[0].includes("Freight");
-                if (isDollarValues) {
-                  value = "$ " + (+el[1]).toFixed(2);
-                }
-                if (el[0] === "CustomerID") {
-                  return (
-                    <div key={i}>
-                      <p className="p-header">{pHeader.replace("i d", "id")}</p>
-                      <Link to={`/customer/${el[1]}`}>
-                        <p>{value}</p>
-                      </Link>
-                    </div>
-                  );
-                }
-                if (el[0].includes("Date")) {
-                  return (
-                    <div key={i}>
-                      <p className="p-header">{pHeader}</p>
-                      <p>{getDate(new Date(value).toString())}</p>
-                    </div>
-                  );
-                }
-                if (el[1]) {
-                  return (
-                    <div key={i}>
-                      <p className="p-header">{pHeader}</p>
-                      <p>{value}</p>
-                    </div>
-                  );
-                }
-              })}
-            </StyledColumnsFlexWrapper>
-            <div>Products in Order</div>
-            {orderInfo?.ProductsInOrder?.length > 0 && (
-              <PaginatedTable
-                items={orderInfo.ProductsInOrder}
-                itemsPerPage={AMOUNT_OF_VALUES_PER_PAGE}
-                whereTo="product"
-              />
+      <InfoCartWrapper>
+        <IndividualHeader info="Order information" />
+        <IndividualContainer>
+          <div>
+            <div className="field">
+              <p>Customer Id</p>
+              <Link to={`/customer/${orderInformation?.CustomerID}`}>
+                {orderInformation?.CustomerID}
+              </Link>
+            </div>
+            <div className="field">
+              <p>Ship Name</p>
+              <p>{orderInformation?.ShipName}</p>
+            </div>
+            <div className="field">
+              <p>Total Products</p>
+              <p>{orderInformation?.TotalProducts}</p>
+            </div>
+            <div className="field">
+              <p>Total Quantity</p>
+              <p>{orderInformation?.Quantity}</p>
+            </div>
+            <div className="field">
+              <p>Total Price</p>
+              <p>${orderInformation?.TotalPrice}</p>
+            </div>
+            <div className="field">
+              <p>Total Discount</p>
+              <p>${orderInformation?.TotalDiscount}</p>
+            </div>
+            <div className="field">
+              <p>Ship Via</p>
+              <p>{orderInformation?.ShipVia}</p>
+            </div>
+            <div className="field">
+              <p>Freight</p>
+              <p>${orderInformation?.Freight}</p>
+            </div>
+          </div>
+          <div>
+            <div className="field">
+              <p>Order Date</p>
+              <p>{orderInformation?.OrderDate.slice(0, 10)}</p>
+            </div>
+            <div className="field">
+              <p>Required Date</p>
+              <p>{orderInformation?.RequiredDate.slice(0, 10)}</p>
+            </div>
+            {orderInformation?.ShipCity && (
+              <div className="field">
+                <p>Ship City</p>
+                <p>{orderInformation?.ShipCity}</p>
+              </div>
             )}
-            <Button to="/orders" />
-          </>
-        )}
-      </LeftSpaceFlexWrapper>
+            <div className="field">
+              <p>Ship Region</p>
+              <p>{orderInformation?.ShipRegion}</p>
+            </div>
+            {orderInformation?.ShipPostalCode && (
+              <div className="field">
+                <p>Ship Postal Code</p>
+                <p>{orderInformation?.ShipPostalCode}</p>
+              </div>
+            )}
+            <div className="field">
+              <p>Ship Country</p>
+              <p>{orderInformation?.ShipCountry}</p>
+            </div>
+          </div>
+        </IndividualContainer>
+        <div className="product-ordered">
+          <p>Products in Order</p>
+        </div>
+        <IndividualFooter to="/orders" />
+      </InfoCartWrapper>
     </main>
   );
 }

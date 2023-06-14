@@ -26,7 +26,7 @@ export default function Sidebar() {
   return (
     <aside className={asideClass}>
       <AsideWrapper direction="column">
-        <div>
+        <div className="logo-container">
           <Link to="/" className="logo-link">
             <h1>
               Northwind <span>Traders</span>
@@ -43,7 +43,8 @@ export default function Sidebar() {
                 onClick={linksHandler}
                 className="nav-link"
               >
-                {el.name}
+                <span className="material-icons">{el.icon}</span>
+                <span className="nav-link-content">{el.name}</span>
               </NavLink>
             ))}
           </FlexWrapper>
@@ -58,7 +59,8 @@ export default function Sidebar() {
                 onClick={linksHandler}
                 className="nav-link"
               >
-                {el.name}
+                <span className="material-icons">{el.icon}</span>
+                <span className="nav-link-content">{el.name}</span>
               </NavLink>
             ))}
           </FlexWrapper>

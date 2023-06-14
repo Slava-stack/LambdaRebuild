@@ -11,4 +11,11 @@ const getDate = (strDate: string) => {
   return date;
 };
 
+export const getDateV2 = (strDate: string) => {
+  console.log(strDate);
+  const tIndex = strDate.indexOf("T");
+  const newDate = strDate.slice(0, tIndex);
+  return newDate;
+};
+
 export default getDate;

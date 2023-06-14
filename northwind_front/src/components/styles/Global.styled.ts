@@ -8,7 +8,12 @@ const Global = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
   list-style: none;
-  font-family: "Helvetica", "Urbanist";
+  font-family: "system-ui", "ui-sans-serif";
+  font-size: 1rem;
+}
+
+main{
+  padding: 1.5rem;
 }`;
 
 export default Global;

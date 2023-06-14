@@ -1,15 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
 import axios from "axios";
 import { EmployeeInfoInterface, EmployeeResponseAPI } from "../../types/types";
 import useQueriesStore from "../../store/queriesStore";
-import { fromCmlToStrUpperFirst } from "../../helpers/camelToSpaceString";
-import getDate from "../../helpers/getDate";
-import Button from "../../components/Button/Button";
 import useWindowWidthResize from "../../hooks/windowWidth";
+import IndividualFooter from "../../components/IndividualFooter/IndividualFooter";
+import IndividualHeader from "../../components/IndividualHeader/IndividualHeader";
 
-import { LeftSpaceFlexWrapper } from "../../components/styles/FlexWrappers.styled";
-import StyledColumnsFlexWrapper from "../../components/styles/ColumnsFlexWrapper.styled";
+import "./Employee.scss";
+import getName from "../../helpers/getName";
+import InfoCartWrapper from "../../components/styles/InfoCartWrapper.styled";
+import IndividualContainer from "../../components/styles/IndividualContainer.styled";
 
 export default function Employees() {
   const navigate = useNavigate();
@@ -17,15 +18,10 @@ export default function Employees() {
 
   const windowWidth = useWindowWidthResize();
   const { addQuery, addQueryResult } = useQueriesStore();
-  const [employeeInfo, setEmployeeInfo] = useState<EmployeeInfoInterface | []>(
-    []
-  );
+  const [employeeInfo, setEmployeeInfo] = useState<EmployeeInfoInterface>();
 
   const urlParams = useParams();
   const { id } = urlParams;
-
-  const reportsToNameIndex = Object.keys(employeeInfo).indexOf("fullName");
-  const reportsToValue = Object.values(employeeInfo)[reportsToNameIndex];
 
   const ignore = useRef(false);
 
@@ -49,62 +45,81 @@ export default function Employees() {
 
   return (
     <main>
-      <LeftSpaceFlexWrapper direction="column">
-        <div>Employee information</div>
-        <StyledColumnsFlexWrapper
-          columns={windowWidth < 800 ? 1 : 3}
-          width="90%"
-        >
-          {Object.entries(employeeInfo).map((el, i) => {
-            const pHeader = fromCmlToStrUpperFirst(el[0]);
-            const isNotNeededFields =
-              el[0].includes("ID") || el[0].includes("fullName");
-            if (isNotNeededFields) {
-              return;
-            }
-            if (el[0].includes("Date")) {
-              return (
-                <div key={i}>
-                  <p className="p-header">{pHeader}</p>
-                  <p>{getDate(new Date(el[1]).toString())}</p>
-                </div>
-              );
-            }
-
-            if (el[0].includes("ReportsTo")) {
-              if (reportsToValue) {
-                return (
-                  <div key={i}>
-                    <p>{pHeader}</p>
-                    <Link
-                      to={`/employee/${el[1]}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        ignore.current = false;
-                        navigate(`/employee/${el[1]}`, {
-                          state: Math.random(),
-                        });
-                      }}
-                    >
-                      <p>{reportsToValue}</p>
-                    </Link>
-                  </div>
-                );
-              }
-            }
-
-            if (el[1]) {
-              return (
-                <div key={i}>
-                  <p className="p-header">{pHeader}</p>
-                  <p>{el[1]}</p>
-                </div>
-              );
-            }
-          })}
-        </StyledColumnsFlexWrapper>
-        <Button to="/employees" />
-      </LeftSpaceFlexWrapper>
+      <InfoCartWrapper>
+        <IndividualHeader info="Employee information" />
+        <IndividualContainer>
+          <div>
+            <div className="field">
+              <p>Name</p>
+              <p>{employeeInfo?.EmployeeFullName}</p>
+            </div>
+            <div className="field">
+              <p>Title</p>
+              <p>{employeeInfo?.Title}</p>
+            </div>
+            <div className="field">
+              <p>Title Of Courtesy</p>
+              <p>{employeeInfo?.TitleOfCourtesy}</p>
+            </div>
+            <div className="field">
+              <p>Birth Date</p>
+              <p>{employeeInfo?.BirthDate?.slice(0, 10)}</p>
+            </div>
+            <div className="field">
+              <p>Hire Date</p>
+              <p>{employeeInfo?.HireDate?.slice(0, 10)}</p>
+            </div>
+            <div className="field">
+              <p>Address</p>
+              <p>{employeeInfo?.Address}</p>
+            </div>
+            <div className="field">
+              <p>City</p>
+              <p>{employeeInfo?.City}</p>
+            </div>
+          </div>
+          <div>
+            <div className="field">
+              <p>Postal Code</p>
+              <p>{employeeInfo?.PostalCode}</p>
+            </div>
+            <div className="field">
+              <p>Country</p>
+              <p>{employeeInfo?.Country}</p>
+            </div>
+            <div className="field">
+              <p>Home Phone</p>
+              <p>{employeeInfo?.HomePhone}</p>
+            </div>
+            <div className="field">
+              <p>Extension</p>
+              <p>{employeeInfo?.Extension}</p>
+            </div>
+            <div className="field">
+              <p>Notes</p>
+              <p>{employeeInfo?.Notes}</p>
+            </div>
+            {employeeInfo?.ReportsTo && (
+              <div className="field">
+                <p>Reports To</p>
+                <Link
+                  to={`/employee/${employeeInfo?.ReportsTo}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    ignore.current = false;
+                    navigate(`/employee/${employeeInfo?.ReportsTo}`, {
+                      state: Math.random(),
+                    });
+                  }}
+                >
+                  {getName(employeeInfo?.fullName)}
+                </Link>
+              </div>
+            )}
+          </div>
+        </IndividualContainer>
+        <IndividualFooter to="/employees" />
+      </InfoCartWrapper>
     </main>
   );
 }

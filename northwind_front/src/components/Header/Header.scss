@@ -2,57 +2,63 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  height: 3.5rem;
+  border-bottom: 1px solid RGB(243 244 246);
+  background: #fff;
 
   .aside-ham {
     display: none;
   }
 
   .time {
-    font-size: 20px;
-    font-weight: 600;
-    margin-left: 30px;
+    padding: 0.5rem 0.75rem;
+    line-height: 24px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    margin-left: 24px;
   }
 
   .ham-container {
-    margin-right: 50px;
+    user-select: none;
+    padding: 0.5rem 1.56rem 0.5rem 1.5rem;
 
     .ham-btn {
-      .ham {
-        margin: -2px 10px 0 0;
-      }
+      cursor: pointer;
 
       p {
-        width: 100%;
-        font-size: 20px;
-        font-weight: 600;
+        margin: 1px 0 0 0.5rem;
       }
 
-      .arrow {
-        width: 18px;
-        margin-left: 5px;
+      &.ham-opened {
+        color: #3b82f6;
       }
     }
 
     .links-container {
       z-index: 10;
-      background: #edf2f6;
       height: fit-content;
-      width: 107%;
-      padding: 10px;
-      border-radius: 6px;
+      width: 100%;
+      background-color: #fff;
 
-      .sql-link {
-        display: flex;
-        color: unset;
-        text-decoration: unset;
-        font-size: 14px;
+      .link {
+        a {
+          display: flex;
+          color: unset;
+          text-decoration: unset;
+          align-items: center;
+          padding: 0.5rem 0.75rem;
 
-        img {
-          margin-right: 10px;
-        }
+          p {
+            font-size: 14px;
+            line-height: 20px;
+            margin-left: 0.5rem;
+          }
 
-        &:hover {
-          color: rgb(118, 118, 118);
+          &:hover {
+            color: rgb(118, 118, 118);
+          }
         }
       }
 
@@ -75,7 +81,8 @@ header {
     }
 
     .ham-container {
-      margin-right: 0;
+      user-select: none;
+      padding: 0.5rem 1.65rem;
 
       .ham-btn {
         p,
@@ -94,7 +101,7 @@ header {
         div {
           margin: 0 0 25px 0;
 
-          .sql-link {
+          a {
             font-size: 2em;
           }
         }
@@ -108,7 +115,7 @@ header {
     .ham-container {
       .links-container {
         div {
-          .sql-link {
+          a {
             font-size: 1.5em;
           }
         }
@@ -122,7 +129,7 @@ header {
     .ham-container {
       .links-container {
         div {
-          .sql-link {
+          a {
             font-size: 1em;
           }
         }

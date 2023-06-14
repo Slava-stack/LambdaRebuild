@@ -61,10 +61,11 @@ export interface CustomersRow {
   ContactTitle: string;
   City: string;
   Country: string;
+  Phone: string;
 }
 
 export interface ProductsRow {
-  ProductId: number;
+  ProductID: number;
   ProductName: string;
   QuantityPerUnit: string;
   UnitPrice: string;
@@ -174,6 +175,7 @@ export interface OrderInfoInterface {
       ShipRegion: string;
       ShipPostalCode: string;
       ShipCountry: string;
+      ShipVia: string;
     }
   ];
   ProductsInOrder: OrderProducts[];

@@ -3,18 +3,16 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { CustomerInfoInterface, CustomerResponseAPI } from "../../types/types";
 import useQueriesStore from "../../store/queriesStore";
-import { fromCmlToStrUpperFirst } from "../../helpers/camelToSpaceString";
-import Button from "../../components/Button/Button";
 import useWindowWidthResize from "../../hooks/windowWidth";
 
-import StyledColumnsFlexWrapper from "../../components/styles/ColumnsFlexWrapper.styled";
-import { LeftSpaceFlexWrapper } from "../../components/styles/FlexWrappers.styled";
+import IndividualFooter from "../../components/IndividualFooter/IndividualFooter";
+import InfoCartWrapper from "../../components/styles/InfoCartWrapper.styled";
+import IndividualHeader from "../../components/IndividualHeader/IndividualHeader";
+import IndividualContainer from "../../components/styles/IndividualContainer.styled";
 
 export default function Customers() {
   const { addQuery, addQueryResult } = useQueriesStore();
-  const [customerInfo, setCustomerInfo] = useState<CustomerInfoInterface | []>(
-    []
-  );
+  const [customerInfo, setCustomerInfo] = useState<CustomerInfoInterface>();
   const windowWidth = useWindowWidthResize();
   const urlParams = useParams();
   const { id } = urlParams;
@@ -41,28 +39,70 @@ export default function Customers() {
 
   return (
     <main>
-      <LeftSpaceFlexWrapper direction="column">
-        <p>Customer information</p>
-        <StyledColumnsFlexWrapper
-          width="80%"
-          columns={windowWidth < 800 ? 2 : 3}
-        >
-          {Object.entries(customerInfo).map((el, i) => {
-            if (el[0].includes("ID")) {
-              return;
-            }
-            if (el[1]) {
-              return (
-                <div key={i}>
-                  <p className="p-header">{fromCmlToStrUpperFirst(el[0])}</p>
-                  <p>{el[1]}</p>
-                </div>
-              );
-            }
-          })}
-        </StyledColumnsFlexWrapper>
-        <Button to="/customers" />
-      </LeftSpaceFlexWrapper>
+      <InfoCartWrapper>
+        <IndividualHeader info="Customer information" />
+        <IndividualContainer>
+          <div>
+            <div className="field">
+              <p>Company Name</p>
+              <p>{customerInfo?.CompanyName}</p>
+            </div>
+            <div className="field">
+              <p>Contact Name</p>
+              <p>{customerInfo?.ContactName}</p>
+            </div>
+            <div className="field">
+              <p>Contact Title</p>
+              <p>{customerInfo?.ContactTitle}</p>
+            </div>
+            {customerInfo?.Address && (
+              <div className="field">
+                <p>Address</p>
+                <p>{customerInfo?.Address}</p>
+              </div>
+            )}
+            {customerInfo?.City && (
+              <div className="field">
+                <p>City</p>
+                <p>{customerInfo?.City}</p>
+              </div>
+            )}
+          </div>
+          <div>
+            {customerInfo?.PostalCode && (
+              <div className="field">
+                <p>Postal Code</p>
+                <p>{customerInfo?.PostalCode}</p>
+              </div>
+            )}
+            {customerInfo?.Region && (
+              <div className="field">
+                <p>Region</p>
+                <p>{customerInfo?.Region}</p>
+              </div>
+            )}
+            {customerInfo?.Country && (
+              <div className="field">
+                <p>Country</p>
+                <p>{customerInfo?.Country}</p>
+              </div>
+            )}
+            {customerInfo?.Phone && (
+              <div className="field">
+                <p>Phone</p>
+                <p>{customerInfo?.Phone}</p>
+              </div>
+            )}
+            {customerInfo?.Fax && (
+              <div className="field">
+                <p>Fax</p>
+                <p>{customerInfo?.Fax}</p>
+              </div>
+            )}
+          </div>
+        </IndividualContainer>
+        <IndividualFooter to="/customers" />
+      </InfoCartWrapper>
     </main>
   );
 }

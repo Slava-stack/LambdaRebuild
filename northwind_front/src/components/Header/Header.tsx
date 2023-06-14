@@ -6,9 +6,7 @@ import useLayoutStore from "../../store/overlay";
 import headerHamStore from "../../store/headerHam";
 
 import "./Header.scss";
-import arrowSVG from "../../assets/arrow.svg";
 import hamSVG from "../../assets/hamburger.svg";
-import linkSVG from "../../assets/link.svg";
 import { FlexWrapper } from "../styles/FlexWrappers.styled";
 
 export default function Header() {
@@ -52,21 +50,21 @@ export default function Header() {
         className="ham-container"
       >
         <FlexWrapper className={hamButtonClasses} onClick={hamHandler}>
-          <img src={hamSVG} alt="hamburger" className="ham" />
+          <span className="material-icons">menu</span>
           <p>SQLite Links</p>
-          <img src={arrowSVG} alt="arrow" className="arrow" />
+          <span className="material-icons">keyboard_arrow_down</span>
         </FlexWrapper>
         {showHam && (
           <FlexWrapper
             direction="column"
             position="absolute"
-            inset="35px 0 0 -3px"
+            inset="49px 0 0 0px"
             className="links-container"
           >
             {hamLinks.map((el) => (
-              <FlexWrapper key={el.id} margin="0 0 5px 0">
-                <a href={el.link} className="sql-link">
-                  <img src={linkSVG} alt="link" />
+              <FlexWrapper key={el.id} className="link">
+                <a href={el.link}>
+                  <span className="material-icons">link</span>
                   <p>{el.name}</p>
                 </a>
               </FlexWrapper>

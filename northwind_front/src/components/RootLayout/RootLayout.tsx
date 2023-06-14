@@ -11,7 +11,7 @@ export default function RootLayout() {
     <>
       <Overlay />
       <Sidebar />
-      <FlexWrapper100Width direction="column">
+      <FlexWrapper100Width direction="column" >
         <Header />
         <Outlet />
       </FlexWrapper100Width>

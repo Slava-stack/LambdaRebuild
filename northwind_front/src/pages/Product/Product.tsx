@@ -3,22 +3,18 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { ProductInfoInterface, ProductReponseAPI } from "../../types/types";
 import useQueriesStore from "../../store/queriesStore";
-import { fromCmlToStrUpperFirst } from "../../helpers/camelToSpaceString";
-import Button from "../../components/Button/Button";
-
-import { LeftSpaceFlexWrapper } from "../../components/styles/FlexWrappers.styled";
-import StyledColumnsFlexWrapper from "../../components/styles/ColumnsFlexWrapper.styled";
+import IndividualHeader from "../../components/IndividualHeader/IndividualHeader";
+import IndividualFooter from "../../components/IndividualFooter/IndividualFooter";
+import InfoCartWrapper from "../../components/styles/InfoCartWrapper.styled";
+import IndividualContainer from "../../components/styles/IndividualContainer.styled";
 
 export default function Product() {
   const { addQuery, addQueryResult } = useQueriesStore();
-  const [productInfo, setProductInfo] = useState<ProductInfoInterface | []>([]);
+  const [productInfo, setProductInfo] = useState<ProductInfoInterface>();
   const urlParams = useParams();
   const { id } = urlParams;
 
   const ignore = useRef(false);
-
-  const supplierIdIndex = Object.keys(productInfo).indexOf("SupplierID");
-  const supplierValue = Object.values(productInfo)[supplierIdIndex];
 
   useEffect(() => {
     const getAndSetData = async () => {
@@ -40,52 +36,50 @@ export default function Product() {
 
   return (
     <main>
-      <LeftSpaceFlexWrapper direction="column">
-        <p>Product information</p>
-        <StyledColumnsFlexWrapper columns={2} width="70%">
-          {Object.entries(productInfo).map((el, i) => {
-            const pHeader = fromCmlToStrUpperFirst(el[0]);
-            if (el[0].includes("ID")) {
-              return;
-            }
-            if (el[0].includes("Price")) {
-              return (
-                <div key={i}>
-                  <p className="p-header">{pHeader}</p>
-                  <p>${el[1]}</p>
-                </div>
-              );
-            }
-            if (el[0] === "CompanyName") {
-              return (
-                <div key={i}>
-                  <p className="p-header">{pHeader}</p>
-                  <Link to={`/supplier/${supplierValue}`}>
-                    <p>{el[1]}</p>
-                  </Link>
-                </div>
-              );
-            }
-            if (typeof el[1] === "object") {
-              return (
-                <div key={i}>
-                  <p className="p-header">{pHeader}</p>
-                  <p>{el[1].data[0]}</p>
-                </div>
-              );
-            }
-            if (el[1]) {
-              return (
-                <div key={i}>
-                  <p className="p-header">{pHeader}</p>
-                  <p>{el[1]}</p>
-                </div>
-              );
-            }
-          })}
-        </StyledColumnsFlexWrapper>
-        <Button to="/products" />
-      </LeftSpaceFlexWrapper>
+      <InfoCartWrapper>
+        <IndividualHeader info="Product information" />
+        <IndividualContainer>
+          <div>
+            <div className="field">
+              <p>Product Name</p>
+              <p>{productInfo?.ProductName}</p>
+            </div>
+            <div className="field">
+              <p>Supplier</p>
+              <Link to={`/supplier/${productInfo?.SupplierID}`}>
+                {productInfo?.CompanyName}
+              </Link>
+            </div>
+            <div className="field">
+              <p>Quantity Per Unit</p>
+              <p>{productInfo?.QuantityPerUnit}</p>
+            </div>
+            <div className="field">
+              <p>Unit Price</p>
+              <p>${productInfo?.UnitPrice.replace(".00", "")}</p>
+            </div>
+          </div>
+          <div>
+            <div className="field">
+              <p>Units In Stock</p>
+              <p>{productInfo?.UnitsInStock}</p>
+            </div>
+            <div className="field">
+              <p>Units In Order</p>
+              <p>{productInfo?.UnitsOnOrder}</p>
+            </div>
+            <div className="field">
+              <p>Reorder Level</p>
+              <p>{productInfo?.ReorderLevel}</p>
+            </div>
+            <div className="field">
+              <p>Discontinued</p>
+              <p>{productInfo?.Discontinued?.data}</p>
+            </div>
+          </div>
+        </IndividualContainer>
+        <IndividualFooter to="/products" />
+      </InfoCartWrapper>
     </main>
   );
 }

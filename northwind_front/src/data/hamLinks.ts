@@ -2,7 +2,7 @@ const hamLinks = [
   {
     id: 1,
     link: "https://blog.cloudflare.com/introducing-d1",
-    name: "Introducing D1",
+    name: "Reintroducing D1",
   },
   {
     id: 2,

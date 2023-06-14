@@ -15,17 +15,12 @@ import {
   WordAndTableInterface,
 } from "../../types/types";
 import { useSearchParams } from "react-router-dom";
-import PaginatedTable from "../../components/PaginatedTable/PaginatedTable";
 
-import {
-  FlexWrapperShortened,
-  LeftSpaceFlexWrapper,
-} from "../../components/styles/FlexWrappers.styled";
-import searchSVG from "../../assets/search.svg";
+import { FlexWrapper } from "../../components/styles/FlexWrappers.styled";
 import "./Search.scss";
+import SearchList from "../../components/SearchList/SearchList";
 
 export default function Search() {
-  const AMOUNT_OF_VALUES_PER_PAGE = 900;
   const [searchParams, setSearchParams] = useSearchParams();
   const { addQuery, addQueryResult } = useQueriesStore();
   const [searchValues, setSearchValues] = useState<
@@ -88,8 +83,8 @@ export default function Search() {
 
   return (
     <main>
-      <LeftSpaceFlexWrapper direction="column">
-        <FlexWrapperShortened width="fit-content">
+      <FlexWrapper direction="column" className="search-container">
+        <div>
           <form onSubmit={handlerSubmit}>
             <p className="p-header">Search Database</p>
             <div className="input-block">
@@ -100,7 +95,7 @@ export default function Search() {
                 value={formValues.input}
                 onChange={inputHandler}
               />
-              <img src={searchSVG} alt="lens" />
+              <span className="material-icons">search</span>
             </div>
             <div className="table-block">
               <p>Tables</p>
@@ -128,20 +123,16 @@ export default function Search() {
               </div>
             </div>
           </form>
-        </FlexWrapperShortened>
-        <div>
-          <p>Search result</p>
+        </div>
+        <div className="search-results">
+          <p>Search results</p>
           {searchValues.length > 0 ? (
-            <PaginatedTable
-              itemsPerPage={AMOUNT_OF_VALUES_PER_PAGE}
-              items={searchValues}
-              whereTo={formValues.table.slice(0, formValues.table.length - 1)}
-            />
+            <SearchList values={searchValues} tableType={formValues.table} />
           ) : (
-            <p>No found data</p>
+            <p className="no-results">No results</p>
           )}
         </div>
-      </LeftSpaceFlexWrapper>
+      </FlexWrapper>
     </main>
   );
 }
