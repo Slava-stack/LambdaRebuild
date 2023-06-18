@@ -6,7 +6,7 @@ const queries = {
     customerQuery: "SELECT CustomerID, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax " +
         "FROM Customers " +
         "WHERE CustomerID=?;",
-    employeesQuery: 'SELECT EmployeeID, CONCAT(LastName, " ", FirstName) AS FullName, Title, City, Country ' +
+    employeesQuery: 'SELECT EmployeeID, CONCAT(FirstName, " ", LastName) AS FullName, Title, City, Country ' +
         "FROM Employees;",
     employeeQuery: 'SELECT e1.EmployeeID, CONCAT(e1.FirstName, " ", e1.LastName) AS EmployeeFullName, e1.Title, e1.TitleOfCourtesy, e1.BirthDate, ' +
         "e1.HireDate, e1.Address, e1.City, e1.Region, e1.PostalCode, e1.Country, e1.HomePhone, e1.Extension, e1.Notes, " +
