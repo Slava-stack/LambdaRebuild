@@ -1,6 +1,6 @@
 import React from "react";
 
-import dbIMG from "../../assets/public.avif";
+import dbIMG from "../../assets/public.png";
 import "./Home.scss";
 
 export default function Home() {
