@@ -16,6 +16,15 @@ CREATE TABLE Territories(
 	FOREIGN KEY (RegionID) REFERENCES Region (RegionID)
 );
 
+// planetscale
+CREATE TABLE Territories(
+	TerritoryID INT PRIMARY KEY,
+	TerritoryDescription TEXT,
+	RegionID INT,
+	KEY RegionID (RegionID)
+);
+
+
 CREATE TABLE Shippers(
 	ShipperID INT PRIMARY KEY,
 	CompanyName VARCHAR(50),
@@ -76,6 +85,27 @@ CREATE TABLE Orders(
 	FOREIGN KEY (ShipVia) REFERENCES Shippers(ShipperID)
 );
 
+// planetscale
+CREATE TABLE Orders(
+	OrderID INT PRIMARY KEY AUTO_INCREMENT,
+	CustomerID VARCHAR(15),
+	EmployeeID INT,
+	OrderDate DATETIME,
+	RequiredDate DATETIME,
+	ShippedDate DATETIME,
+	ShipVia INT,
+	Freight DECIMAL(6,2),
+	ShipName VARCHAR(50),
+	ShipAddress VARCHAR(100),
+	ShipCity VARCHAR(50),
+	ShipRegion VARCHAR(50),
+	ShipPostalCode VARCHAR(50),
+	ShipCountry VARCHAR(50),
+	KEY CustomerID (CustomerID),
+	KEY EmployeeID (EmployeeID),
+	KEY ShipperID (ShipVia)
+);
+
 CREATE TABLE Supplies(
     	SupplierID INT PRIMARY KEY AUTO_INCREMENT,	
 	CompanyName VARCHAR(50),
@@ -106,6 +136,23 @@ CREATE TABLE Products(
 	FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 );
 
+
+// planetscale
+CREATE TABLE Products(
+	ProductID INT PRIMARY KEY,
+	ProductName VARCHAR(250),
+	SupplierID INT,
+	CategoryID INT,
+	QuantityPerUnit VARCHAR(60),
+	UnitPrice DECIMAL(13,2),
+	UnitInStock SMALLINT,
+	UnitsOnOrder SMALLINT,
+	ReorderLevel SMALLINT,
+	Discontinued BIT(1),
+	KEY SupplierID (SupplierID),
+	KEY CategoryID (CategoryID)
+);
+
 CREATE TABLE OrderDetails(
 	OrderID INT,
 	ProductID INT,
@@ -116,9 +163,28 @@ CREATE TABLE OrderDetails(
 	FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
 
+//planetscale
+CREATE TABLE OrderDetails(
+	OrderID INT,
+	ProductID INT,
+	UnitPrice DECIMAL(13,2),
+	Quantity INT,
+	Discount DECIMAL(5,2),
+	KEY OrderID (OrderID),
+	KEY ProductID (ProductID)
+);
+
 CREATE TABLE EmployeeTerritories(
 	EmployeeID INT,
 	TerritoryID INT,
 	FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID),
 	FOREIGN KEY (TerritoryID) REFERENCES Territories (TerritoryID)
+);
+
+//planetscale
+CREATE TABLE EmployeeTerritories(
+	EmployeeID INT,
+	TerritoryID INT,
+	KEY EmployeeID (EmployeeID),
+	KEY TerritoryID (TerritoryID)
 );
