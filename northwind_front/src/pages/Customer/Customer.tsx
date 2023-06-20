@@ -3,8 +3,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { CustomerInfoInterface, CustomerResponseAPI } from "../../types/types";
 import useQueriesStore from "../../store/queriesStore";
-import useWindowWidthResize from "../../hooks/windowWidth";
-
 import IndividualFooter from "../../components/IndividualFooter/IndividualFooter";
 import InfoCartWrapper from "../../components/styles/InfoCartWrapper.styled";
 import IndividualHeader from "../../components/IndividualHeader/IndividualHeader";
@@ -13,7 +11,6 @@ import IndividualContainer from "../../components/styles/IndividualContainer.sty
 export default function Customers() {
   const { addQuery, addQueryResult } = useQueriesStore();
   const [customerInfo, setCustomerInfo] = useState<CustomerInfoInterface>();
-  const windowWidth = useWindowWidthResize();
   const urlParams = useParams();
   const { id } = urlParams;
 

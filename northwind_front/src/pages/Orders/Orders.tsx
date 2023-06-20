@@ -5,7 +5,7 @@ import { OrdersReponseAPI, OrdersRow } from "../../types/types";
 import useQueriesStore from "../../store/queriesStore";
 import PaginatedTable from "../../components/PaginatedTable/PaginatedTable";
 
-import { LeftSpaceFlexWrapper } from "../../components/styles/FlexWrappers.styled";
+import { FlexWrapper } from "../../components/styles/FlexWrappers.styled";
 
 export default function Orders() {
   const AMOUNT_OF_VALUES_PER_PAGE = 20;
@@ -41,7 +41,7 @@ export default function Orders() {
 
   return (
     <main>
-      <LeftSpaceFlexWrapper direction="column">
+      <FlexWrapper direction="column">
         {responseDataRows.length > 0 && (
           <PaginatedTable
             itemsPerPage={AMOUNT_OF_VALUES_PER_PAGE}
@@ -51,7 +51,7 @@ export default function Orders() {
             initialPage={page.current}
           />
         )}
-      </LeftSpaceFlexWrapper>
+      </FlexWrapper>
     </main>
   );
 }

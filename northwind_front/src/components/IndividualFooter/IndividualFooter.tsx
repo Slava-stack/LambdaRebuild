@@ -1,12 +1,17 @@
 import React from "react";
 import Button from "../Button/Button";
+import { IndividualFooterInterface } from "../../types/types";
 
 import "./IndividualFooter.scss";
+import ButtonFooter from "../styles/ButtonFooter.styled";
 
-export default function IndividualFooter({ to }: { to: string }) {
+export default function IndividualFooter({
+  to,
+  border,
+}: IndividualFooterInterface) {
   return (
-    <div className="info-footer">
+    <ButtonFooter border={border}>
       <Button to={to} />
-    </div>
+    </ButtonFooter>
   );
 }

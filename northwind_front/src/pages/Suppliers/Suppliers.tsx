@@ -5,10 +5,10 @@ import useQueriesStore from "../../store/queriesStore";
 import { SuppliersReponseAPI, SuppliersRow } from "../../types/types";
 import PatinatedTable from "../../components/PaginatedTable/PaginatedTable";
 
-import { LeftSpaceFlexWrapper } from "../../components/styles/FlexWrappers.styled";
+import { FlexWrapper } from "../../components/styles/FlexWrappers.styled";
 
 export default function Suppliers() {
-  const AMOUNT_OF_VALUES_PER_PAGE = 10;
+  const AMOUNT_OF_VALUES_PER_PAGE = 20;
   const [searchParams, setSearchParams] = useSearchParams();
   const { addQuery } = useQueriesStore();
   const [responseDataRows, setResponseDataRows] = useState<SuppliersRow[]>([]);
@@ -45,7 +45,7 @@ export default function Suppliers() {
 
   return (
     <main>
-      <LeftSpaceFlexWrapper direction="column">
+      <FlexWrapper direction="column">
         {responseDataRows.length > 0 && (
           <PatinatedTable
             itemsPerPage={AMOUNT_OF_VALUES_PER_PAGE}
@@ -55,7 +55,7 @@ export default function Suppliers() {
             initialPage={page.current}
           />
         )}
-      </LeftSpaceFlexWrapper>
+      </FlexWrapper>
     </main>
   );
 }

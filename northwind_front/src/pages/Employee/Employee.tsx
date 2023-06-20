@@ -3,12 +3,10 @@ import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
 import axios from "axios";
 import { EmployeeInfoInterface, EmployeeResponseAPI } from "../../types/types";
 import useQueriesStore from "../../store/queriesStore";
-import useWindowWidthResize from "../../hooks/windowWidth";
 import IndividualFooter from "../../components/IndividualFooter/IndividualFooter";
 import IndividualHeader from "../../components/IndividualHeader/IndividualHeader";
 
 import "./Employee.scss";
-import getName from "../../helpers/getName";
 import InfoCartWrapper from "../../components/styles/InfoCartWrapper.styled";
 import IndividualContainer from "../../components/styles/IndividualContainer.styled";
 
@@ -16,7 +14,6 @@ export default function Employees() {
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  const windowWidth = useWindowWidthResize();
   const { addQuery, addQueryResult } = useQueriesStore();
   const [employeeInfo, setEmployeeInfo] = useState<EmployeeInfoInterface>();
 
@@ -112,7 +109,8 @@ export default function Employees() {
                     });
                   }}
                 >
-                  {getName(employeeInfo?.fullName)}
+                  {employeeInfo?.fullName}
+
                 </Link>
               </div>
             )}

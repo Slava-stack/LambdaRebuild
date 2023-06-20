@@ -21,13 +21,14 @@ export default function Sidebar() {
     setShowAside(false);
     setShowHam(false);
     setShowLayout(false);
+    document.body.style.overflow = "";
   };
 
   return (
     <aside className={asideClass}>
       <AsideWrapper direction="column">
         <div className="logo-container">
-          <Link to="/" className="logo-link">
+          <Link to="/" className="logo-link" onClick={linksHandler}>
             <h1>
               Northwind <span>Traders</span>
             </h1>

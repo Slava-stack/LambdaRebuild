@@ -1,0 +1,146 @@
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem 0.25rem 0 0;
+  border: 1px solid RGB(243, 244, 245);
+
+  p {
+    font-weight: 700;
+    line-height: 24px;
+  }
+
+  button {
+    display: flex;
+    border: none;
+    background-color: unset;
+  }
+}
+
+table {
+  background: #fff;
+  padding: 10px;
+  border-color: RGB(243 244 245);
+  border-style: solid;
+  border-width: 0 1px 0 1px;
+  border-collapse: collapse;
+
+  thead {
+    tr {
+      line-height: 24px;
+
+      th {
+        padding: 0.5rem 0.75rem;
+        text-align: start;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        td {
+          background-color: RGB(249 250 251);
+        }
+      }
+
+      td {
+        padding: 0.5rem 0.75rem;
+        line-height: 24px;
+
+        a {
+          text-decoration: none;
+          color: RGB(37 99 235);
+
+          &:visited {
+            color: none;
+          }
+        }
+      }
+
+      .img-cell {
+        width: 1.5rem;
+        line-height: 0;
+
+        img {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+        }
+      }
+
+      &:hover {
+        td {
+          background: RGB(243 245 246);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1023px) {
+    width: 100%;
+    display: block;
+    padding: 0;
+
+    thead {
+      display: none;
+    }
+
+    tbody {
+      display: block;
+
+      tr {
+        display: block;
+        border-bottom: 4px solid RGB(243 244 246);
+
+        &:last-child {
+          margin-bottom: 0;
+          border-bottom: unset;
+        }
+
+        td {
+          display: block;
+          text-align: right;
+          position: relative;
+          border-bottom: 1px solid RGB(243 244 246);
+          padding: 0.75rem 1rem;
+
+          &::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 0;
+            width: 50%;
+            padding-left: 1rem;
+            text-align: left;
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 500;
+          }
+
+          &:last-child {
+            border: unset;
+          }
+
+          &.img-cell {
+            width: auto;
+            display: flex;
+            border-bottom: unset;
+
+            img {
+              height: auto;
+              width: 96px;
+              margin: 0 auto 0 auto;
+            }
+          }
+        }
+
+        &:nth-child(odd) {
+          td {
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

@@ -6,6 +6,8 @@ header {
   height: 3.5rem;
   border-bottom: 1px solid RGB(243 244 246);
   background: #fff;
+  position: sticky;
+  top: 0;
 
   .aside-ham {
     display: none;
@@ -33,6 +35,10 @@ header {
 
       &.ham-opened {
         color: #3b82f6;
+      }
+
+      .material-icons.icon {
+        display: none;
       }
     }
 
@@ -71,9 +77,10 @@ header {
 
 @media (max-width: 1023px) {
   header {
+    z-index: 1;
     .aside-ham {
       display: block;
-      margin: -2px 0 0 10px;
+      padding: 0.5rem 0.75rem;
     }
 
     .time {
@@ -82,12 +89,21 @@ header {
 
     .ham-container {
       user-select: none;
-      padding: 0.5rem 1.65rem;
+      padding: 0;
 
       .ham-btn {
         p,
-        .arrow {
+        .material-icons {
           display: none;
+        }
+
+        .material-icons.icon {
+          display: block;
+          padding: 0.5rem 0.75rem;
+        }
+
+        &.ham-opened{
+          color:unset;
         }
       }
 
@@ -103,34 +119,6 @@ header {
 
           a {
             font-size: 2em;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 699px) {
-  header {
-    .ham-container {
-      .links-container {
-        div {
-          a {
-            font-size: 1.5em;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 447px) {
-  header {
-    .ham-container {
-      .links-container {
-        div {
-          a {
-            font-size: 1em;
           }
         }
       }

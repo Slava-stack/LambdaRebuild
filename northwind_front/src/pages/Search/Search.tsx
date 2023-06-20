@@ -15,10 +15,10 @@ import {
   WordAndTableInterface,
 } from "../../types/types";
 import { useSearchParams } from "react-router-dom";
-
-import { FlexWrapper } from "../../components/styles/FlexWrappers.styled";
-import "./Search.scss";
 import SearchList from "../../components/SearchList/SearchList";
+
+import "./Search.scss";
+import { FlexWrapper } from "../../components/styles/FlexWrappers.styled";
 
 export default function Search() {
   const [searchParams, setSearchParams] = useSearchParams();

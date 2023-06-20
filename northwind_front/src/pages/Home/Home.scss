@@ -32,18 +32,3 @@
     margin-top: -16px;
   }
 }
-
-@media (max-width: 1023px) {
-  .home-content-block {
-    img {
-      max-width: 300px;
-      max-height: 170px;
-    }
-  }
-}
-
-@media (max-width: 501px) {
-  .home-content-block {
-    padding: 30px 20px 0 20px;
-  }
-}

@@ -1,0 +1,49 @@
+.table-container {
+  border-radius: 0.25rem;
+  border: 1px solid RGB(243 244 246);
+  background-color: #fff;
+
+  .product-ordered {
+    border-bottom: 1px solid RGB(243 244 246);
+    padding: 0.75rem 1rem;
+
+    p {
+      font-weight: 700;
+      line-height: 24px;
+    }
+  }
+
+  .in-order-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+      th {
+        text-align: left;
+        padding: 0.5rem 0.75rem;
+        line-height: 24px;
+      }
+    }
+
+    tbody {
+      tr {
+        line-height: 24px;
+
+        &:nth-child(odd) {
+          background-color: RGB(249 250 251);
+        }
+
+        &:hover {
+          background-color: RGB(243 244 246);
+        }
+        td {
+          padding: 0.5rem 0.75rem;
+          a {
+            text-decoration: none;
+            color: #2563eb;
+          }
+        }
+      }
+    }
+  }
+}

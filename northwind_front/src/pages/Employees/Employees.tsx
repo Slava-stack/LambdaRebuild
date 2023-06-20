@@ -5,7 +5,7 @@ import useQueriesStore from "../../store/queriesStore";
 import { EmployeesReponseAPI, EmployeesRow } from "../../types/types";
 import PaginatedItems from "../../components/PaginatedTable/PaginatedTable";
 
-import { LeftSpaceFlexWrapper } from "../../components/styles/FlexWrappers.styled";
+import { FlexWrapper } from "../../components/styles/FlexWrappers.styled";
 
 export default function Employees() {
   const AMOUNT_OF_VALUES_PER_PAGE = 10;
@@ -43,7 +43,7 @@ export default function Employees() {
 
   return (
     <main>
-      <LeftSpaceFlexWrapper direction="column">
+      <FlexWrapper direction="column">
         {responseDataRows.length > 0 && (
           <PaginatedItems
             itemsPerPage={AMOUNT_OF_VALUES_PER_PAGE}
@@ -53,7 +53,7 @@ export default function Employees() {
             initialPage={page.current}
           />
         )}
-      </LeftSpaceFlexWrapper>
+      </FlexWrapper>
     </main>
   );
 }

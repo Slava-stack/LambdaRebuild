@@ -11,6 +11,7 @@ export default function Overlay() {
   const overlayHandler = () => {
     setShowLayout(false);
     setShowHam(false);
+    document.body.style.overflow = "";
   };
 
   return (

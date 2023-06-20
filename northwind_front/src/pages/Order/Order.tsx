@@ -2,21 +2,16 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { OrderInfoInterface, OrderResponseAPI } from "../../types/types";
-import PaginatedTable from "../../components/PaginatedTable/PaginatedTable";
 import useQueriesStore from "../../store/queriesStore";
-import useWindowWidthResize from "../../hooks/windowWidth";
 import InfoCartWrapper from "../../components/styles/InfoCartWrapper.styled";
 import IndividualHeader from "../../components/IndividualHeader/IndividualHeader";
 import IndividualContainer from "../../components/styles/IndividualContainer.styled";
 import IndividualFooter from "../../components/IndividualFooter/IndividualFooter";
-
-import "./Order.scss";
+import OrderTable from "../../components/OrderTable/OrderTable";
 
 export default function Order() {
-  const AMOUNT_OF_VALUES_PER_PAGE = 20;
   const { addQuery, addQueryResult } = useQueriesStore();
   const [orderInfo, setOrderInfo] = useState<OrderInfoInterface>();
-  const windowWidth = useWindowWidthResize();
 
   const urlParams = useParams();
   const { id } = urlParams;
@@ -116,10 +111,8 @@ export default function Order() {
             </div>
           </div>
         </IndividualContainer>
-        <div className="product-ordered">
-          <p>Products in Order</p>
-        </div>
-        <IndividualFooter to="/orders" />
+        {productsInOrder && <OrderTable tableData={productsInOrder} />}
+        <IndividualFooter to="/orders" border="unset" />
       </InfoCartWrapper>
     </main>
   );

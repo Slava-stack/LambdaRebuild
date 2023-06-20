@@ -6,23 +6,24 @@ import useLayoutStore from "../../store/overlay";
 import headerHamStore from "../../store/headerHam";
 
 import "./Header.scss";
-import hamSVG from "../../assets/hamburger.svg";
 import { FlexWrapper } from "../styles/FlexWrappers.styled";
 
 export default function Header() {
-  const { setShowLayout, setShowAside, showAside } = useLayoutStore();
+  const { setShowLayout, setShowAside, showAside, showLayout } = useLayoutStore();
   const { setShowHam, showHam } = headerHamStore();
   const [time, setTime] = useState("");
   const hamButtonClasses = classNames("ham-btn", { "ham-opened": showHam });
 
   const hamHandler = () => {
     setShowHam(!showHam);
-    setShowLayout(true);
+    setShowLayout(!showLayout);
     setShowAside(false);
+    document.body.style.overflow = "hidden";
   };
 
   const asideHamHandler = () => {
     setShowAside(!showAside);
+    document.body.style.overflow = !showAside ? "hidden" : "";
   };
 
   useEffect(() => {
@@ -36,12 +37,9 @@ export default function Header() {
   return (
     <header>
       {
-        <img
-          src={hamSVG}
-          alt="ham"
-          className="aside-ham"
-          onClick={asideHamHandler}
-        />
+        <span className="material-icons aside-ham" onClick={asideHamHandler}>
+          menu
+        </span>
       }
       <div className="time">{time}</div>
       <FlexWrapper
@@ -53,6 +51,7 @@ export default function Header() {
           <span className="material-icons">menu</span>
           <p>SQLite Links</p>
           <span className="material-icons">keyboard_arrow_down</span>
+          <span className="material-icons icon">more_vert</span>
         </FlexWrapper>
         {showHam && (
           <FlexWrapper

@@ -5,7 +5,7 @@ import useQueriesStore from "../../store/queriesStore";
 import { ProductsReponseAPI, ProductsRow } from "../../types/types";
 import PaginatedTable from "../../components/PaginatedTable/PaginatedTable";
 
-import { LeftSpaceFlexWrapper } from "../../components/styles/FlexWrappers.styled";
+import { FlexWrapper } from "../../components/styles/FlexWrappers.styled";
 
 export default function Products() {
   const AMOUNT_OF_VALUES_PER_PAGE = 20;
@@ -43,7 +43,7 @@ export default function Products() {
 
   return (
     <main>
-      <LeftSpaceFlexWrapper direction="column">
+      <FlexWrapper direction="column">
         {responseDataRows.length > 0 && (
           <PaginatedTable
             itemsPerPage={AMOUNT_OF_VALUES_PER_PAGE}
@@ -53,7 +53,7 @@ export default function Products() {
             initialPage={page.current}
           />
         )}
-      </LeftSpaceFlexWrapper>
+      </FlexWrapper>
     </main>
   );
 }

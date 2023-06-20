@@ -29,13 +29,6 @@ export interface Logging {
   duration: number;
 }
 
-export interface QueryTypes {
-  select: number;
-  selectWhere: number;
-  selectLeftJoin: number;
-  selectLeftJoinWhere: number;
-}
-
 interface ResponseAPI {
   log: Logging[];
   queries: number;
@@ -157,6 +150,15 @@ export interface CustomerInfoInterface {
   Fax: string;
 }
 
+export interface OrderProducts {
+  ProductID: number;
+  ProductName: string;
+  Quantity: number;
+  UnitPrice: string;
+  TotalPrice: string;
+  Discount: string;
+}
+
 export interface OrderInfoInterface {
   OrderInformation: [
     {
@@ -181,15 +183,6 @@ export interface OrderInfoInterface {
   ProductsInOrder: OrderProducts[];
 }
 
-interface OrderProducts {
-  ProductID: number;
-  ProductName: string;
-  Quantity: number;
-  UnitPrice: string;
-  TotalPrice: string;
-  Discount: string;
-}
-
 export type EmployeesReponseAPI = ResponseAPI & { result: EmployeesRow[] };
 export type EmployeeResponseAPI = ResponseAPI & {
   result: EmployeeInfoInterface[];
@@ -211,44 +204,6 @@ export type OrderResponseAPI = ResponseAPI & { result: OrderInfoInterface };
 export type SearchResponseAPI =
   | (ResponseAPI & { result: ProductsRow[] })
   | (ResponseAPI & { result: CustomersRow[] });
-
-export interface TableEmployeesInterface {
-  currentPage: number;
-  visibleDataRows: EmployeesRow[];
-}
-
-export interface TableCustomersInterface {
-  currentPage: number;
-  visibleDataRows: CustomersRow[];
-}
-
-export interface TableSuppliersInterface {
-  currentPage: number;
-  visibleDataRows: SuppliersRow[];
-}
-
-export interface TableProductsInterface {
-  currentPage: number;
-  visibleDataRows: ProductsRow[];
-}
-
-export interface TableOrdersInterface {
-  currentPage: number;
-  visibleDataRows: OrdersRow[];
-}
-
-export interface TableStructureInterface {
-  arr: any[];
-  valuesPerPage: number;
-
-  firstLastRecords: (pageNum: number) => {
-    firstRecord: number;
-    lastRecord: number;
-  };
-  visibleRecords: (pageNum: number) => any[];
-  amountOfValues: (pageNum: number) => number;
-  arrayOfPages: () => number[];
-}
 
 export interface DateOptionsInteraface {
   year: "numeric";
@@ -278,11 +233,6 @@ export interface PaginatedTableInterface {
   initialPage?: number | string;
 }
 
-export interface ColumnsFlexWrapperInterface {
-  columns?: number;
-  width?: string;
-}
-
 export interface TableInterface {
   tableData: any[];
   whereTo: string;
@@ -291,4 +241,9 @@ export interface TableInterface {
 export interface SubmitHandlerInterface {
   search: { value: string };
   table: { value: string };
+}
+
+export interface IndividualFooterInterface {
+  to: string;
+  border?: string;
 }

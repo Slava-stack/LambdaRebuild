@@ -7,11 +7,12 @@ import Overlay from "../Overlay/Overlay";
 import { FlexWrapper100Width } from "../styles/FlexWrappers.styled";
 
 export default function RootLayout() {
+
   return (
     <>
       <Overlay />
       <Sidebar />
-      <FlexWrapper100Width direction="column" >
+      <FlexWrapper100Width direction="column">
         <Header />
         <Outlet />
       </FlexWrapper100Width>

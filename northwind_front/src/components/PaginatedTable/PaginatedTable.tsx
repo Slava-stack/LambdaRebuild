@@ -1,10 +1,9 @@
-import React, { useEffect, useState, FormEvent } from "react";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import Table from "../Table/Table";
 import useQueriesStore from "../../store/queriesStore";
 import { PaginatedTableInterface } from "../../types/types";
 
-import { PagesFlexWrapper } from "../styles/FlexWrappers.styled";
 import "./PaginatedTable.scss";
 
 export default function PaginatedTable({
@@ -44,17 +43,14 @@ export default function PaginatedTable({
   return (
     <>
       <Table tableData={currentItems} whereTo={whereTo || ""} />
-      {items.length > itemsPerPage && (
-        <PagesFlexWrapper justify="space-around">
+      <div className="pagination-content">
+        {items.length > itemsPerPage && (
           <ReactPaginate
             breakLabel="..."
-            nextLabel="►"
-            previousLabel="◄"
             onPageChange={handlePageClick}
-            pageRangeDisplayed={3}
-            marginPagesDisplayed={1}
+            pageRangeDisplayed={7}
+            marginPagesDisplayed={2}
             pageCount={pageCount}
-            renderOnZeroPageCount={null}
             containerClassName="page-btns-container"
             pageLinkClassName="page-btn"
             activeClassName="current-btn"
@@ -62,11 +58,11 @@ export default function PaginatedTable({
             previousClassName="page-btn-prev"
             forcePage={(initialPage && +initialPage) || 0}
           />
-          <p>
-            Page {itemOffset / itemsPerPage + 1} of {pageCount}
-          </p>
-        </PagesFlexWrapper>
-      )}
+        )}
+        <p className="page-counter">
+          Page {itemOffset / itemsPerPage + 1} of {pageCount}
+        </p>
+      </div>
     </>
   );
 }
